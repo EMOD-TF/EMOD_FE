@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="bold">
+        <item name="android:fontFamily">@font/nanumsquareroundboldotf</item>
+        <item name="android:lineSpacingExtra">0dp</item>
+    </style>
+
+    <style name="extrabold">
+        <item name="android:fontFamily">@font/nanumsquareroundextraboldotf</item>
+        <item name="android:lineSpacingExtra">0dp</item>
+    </style>
+
+    <style name="regular">
+        <item name="android:fontFamily">@font/nanumsquareroundregularotf</item>
+        <item name="android:lineSpacingExtra">0dp</item>
+    </style>
+
+    <style name="light">
+        <item name="android:fontFamily">@font/nanumsquareroundlightotf</item>
+        <item name="android:lineSpacingExtra">0dp</item>
+    </style>
+
+</resources>

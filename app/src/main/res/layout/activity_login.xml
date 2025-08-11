@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f5f5f5">
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="-100dp"
+        android:contentDescription="Background Image"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/ic_ob_bg" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="1000dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="-15dp"
+        android:contentDescription="background Cloud Image"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_ob_cloud"
+        app:tint="@color/green_light" />
+
+
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="250dp"
+        android:layout_height="65dp"
+        android:layout_marginBottom="84dp"
+        android:fontFamily="@font/nanumsquareroundextrabold"
+        android:text="로그인"
+        android:textColor="#000000"
+        android:textSize="25sp"
+        app:backgroundTint="@color/primary_normal"
+        app:cornerRadius="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="108dp"
+        android:fontFamily="@font/nanumsquareroundextraboldotf"
+        android:text="이모디, 이런 점이 좋아요!"
+        android:textSize="38sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2">
+        <LinearLayout
+            android:layout_width="300dp"
+            android:layout_height="375dp"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:padding="38dp"
+            android:background="@drawable/gradient_card">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1"
+                android:fontFamily="@font/nanumsquareroundextrabold"
+                android:textSize="60sp"
+                android:textStyle="bold"
+                android:textColor="#000000"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:fontFamily="@font/nanumsquareroundbold"
+                android:gravity="center"
+                android:lineHeight="50dp"
+                android:text="AI가 우리 아이 맞춤 감정 커리큘럼을 설계해줘요."
+                android:textColor="#000000"
+                android:textSize="27sp" />
+        </LinearLayout>
+        <Space
+            android:layout_width="40dp"
+            android:layout_height="1dp" />
+        <LinearLayout
+            android:layout_width="300dp"
+            android:layout_height="375dp"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:padding="38dp"
+            android:background="@drawable/gradient_card">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2"
+                android:fontFamily="@font/nanumsquareroundextrabold"
+                android:textSize="60sp"
+                android:textStyle="bold"
+                android:textColor="#000000"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:fontFamily="@font/nanumsquareroundbold"
+                android:gravity="center"
+                android:lineHeight="50dp"
+                android:text="매일의 대화를 통해 어휘력과 감정 표현 습관이 자라나요."
+                android:textColor="#000000"
+                android:textSize="27sp" />
+        </LinearLayout>
+        <Space
+            android:layout_width="40dp"
+            android:layout_height="1dp" />
+        <LinearLayout
+            android:layout_width="300dp"
+            android:layout_height="375dp"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:padding="38dp"
+            android:background="@drawable/gradient_card">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="3"
+                android:fontFamily="@font/nanumsquareroundextrabold"
+                android:textSize="60sp"
+                android:textStyle="bold"
+                android:textColor="#000000"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:fontFamily="@font/nanumsquareroundbold"
+                android:gravity="center"
+                android:lineHeight="50dp"
+                android:text="감정 리포트로\n아이의 변화 과정을\n한눈에 볼 수 있어요."
+                android:textColor="#000000"
+                android:textSize="27sp" />
+        </LinearLayout>
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -2,4 +2,26 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    // Primary colors
+    <color name="primary_light">#FFFAE9</color>
+    <color name="primary_light_hover">#FFF9DD</color>
+    <color name="primary_light_active">#FFF0BA</color>
+    <color name="primary_normal">#FFCE1F</color>
+    <color name="primary_normal_hover">#E6B91C</color>
+    <color name="primary_normal_active">#CCA519</color>
+    <color name="primary_dark">#BF9B17</color>
+    <color name="primary_dark_hover">#997C13</color>
+    <color name="primary_dark_active">#735D0E</color>
+    <color name="primary_darker">#59480B</color>
+    // Green colors
+    <color name="green_light">#F6FBEB</color>
+    <color name="green_light_hover">#F2F9E1</color>
+    <color name="green_light_active">#E4F3C0</color>
+    <color name="green_normal">#A7D934</color>
+    <color name="green_normal_hover">#96C32F</color>
+    <color name="green_normal_active">#86AE2A</color>
+    <color name="green_dark">#7DA327</color>
+    <color name="green_dark_hover">#64821F</color>
+    <color name="green_dark_active">#4B6217</color>
+    <color name="green_darker">#3A4C12</color>
 </resources>

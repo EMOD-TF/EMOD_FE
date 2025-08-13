@@ -32,8 +32,46 @@
             >
 
 
+            <LinearLayout
+                android:id="@+id/ll_emotion"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_weight="1"
+                android:gravity="center">
 
+                <FrameLayout
+                    android:layout_width="133dp"
+                    android:layout_height="214dp">
 
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="133dp"
+                        android:src="@drawable/ic_small_circle"
+                        android:layout_gravity="center"/>
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/ic_emotion"
+                        android:layout_width="94dp"
+                        android:layout_height="74dp"
+                        android:src="@drawable/ic_place"
+                        android:layout_gravity="center"/>
+
+                    <TextView
+                        android:id="@+id/tv_emotion"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="어린이집"
+                        android:gravity="center_horizontal"
+                        android:textSize="21sp"
+                        android:textColor="#7F7F7F"
+                        style="@style/extrabold"
+                        android:layout_marginTop="27dp"
+                        android:layout_gravity="center|bottom"/>
+
+                </FrameLayout>
+
+            </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/ll_event"
@@ -106,7 +144,7 @@
                         android:id="@+id/tv_title"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="블럭놀이"
+                        android:text="친구"
                         android:gravity="center_horizontal"
                         android:textSize="21sp"
                         android:textColor="#7F7F7F"
@@ -118,48 +156,6 @@
 
             </LinearLayout>
 
-
-
-            <LinearLayout
-                android:id="@+id/ll_emotion"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_weight="1"
-                android:gravity="center">
-
-                <FrameLayout
-                    android:layout_width="133dp"
-                    android:layout_height="214dp">
-
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="133dp"
-                        android:src="@drawable/ic_small_circle"
-                        android:layout_gravity="center"/>
-
-                    <androidx.appcompat.widget.AppCompatImageView
-                        android:id="@+id/ic_emotion"
-                        android:layout_width="86dp"
-                        android:layout_height="78dp"
-                        android:src="@drawable/ic_emotion"
-                        android:layout_gravity="center"/>
-
-                    <TextView
-                        android:id="@+id/tv_emotion"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="블럭놀이"
-                        android:gravity="center_horizontal"
-                        android:textSize="21sp"
-                        android:textColor="#7F7F7F"
-                        style="@style/extrabold"
-                        android:layout_marginTop="27dp"
-                        android:layout_gravity="center|bottom"/>
-
-                </FrameLayout>
-
-            </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/ll_place"
@@ -180,9 +176,9 @@
 
                     <androidx.appcompat.widget.AppCompatImageView
                         android:id="@+id/ic_place"
-                        android:layout_width="129dp"
-                        android:layout_height="102dp"
-                        android:src="@drawable/ic_place"
+                        android:layout_width="106dp"
+                        android:layout_height="98dp"
+                        android:src="@drawable/ic_emotion"
                         android:layout_gravity="center"/>
 
                     <TextView
@@ -205,27 +201,34 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-
-
-            <ImageButton
-                android:id="@+id/btn_summarize_chat4"
+            <FrameLayout
                 android:layout_width="800dp"
                 android:layout_height="160dp"
-                android:src="@drawable/bg_gray_chat"
-                android:background="@android:color/transparent"
                 android:elevation="1dp"
-                android:layout_gravity="center_horizontal"/>
+                android:layout_gravity="center_horizontal">
 
-            <TextView
-                android:id="@+id/tv_chat"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="오늘 길동이는 어린이집을 다녀왔구나!"
-                style="@style/extrabold"
-                android:textSize="27sp"
-                android:gravity="center"
-                android:elevation="2dp"
-                android:layout_marginTop="60dp"/>
+                <ImageButton
+                    android:id="@+id/btn_summarize_chat4"
+                    android:layout_width="700dp"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/bg_gray_chat"
+                    android:layout_gravity="end"
+                    android:background="@android:color/transparent"/>
+
+                <TextView
+                    android:id="@+id/tv_chat"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="그러면 길동아, 속상할 때는 어떻게 하면 좋을 지 모디랑 함께 알아볼까?"
+                    style="@style/extrabold"
+                    android:textSize="27sp"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:layout_marginStart="145dp"
+                    android:layout_marginEnd="80dp"
+                    android:lineSpacingMultiplier="1.5"
+                    android:elevation="2dp"/>
+            </FrameLayout>
 
             <androidx.appcompat.widget.AppCompatImageButton
                 android:id="@+id/btn_next4"

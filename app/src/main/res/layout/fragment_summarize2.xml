@@ -54,16 +54,16 @@
 
                     <androidx.appcompat.widget.AppCompatImageView
                         android:id="@+id/ic_event"
-                        android:layout_width="64dp"
-                        android:layout_height="92dp"
-                        android:src="@drawable/ic_event"
+                        android:layout_width="94dp"
+                        android:layout_height="74dp"
+                        android:src="@drawable/ic_place"
                         android:layout_gravity="center"/>
 
                     <TextView
                         android:id="@+id/tv_event"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="블럭놀이"
+                        android:text="어린이집"
                         android:gravity="center_horizontal"
                         android:textSize="21sp"
                         android:textColor="#7F7F7F"
@@ -95,16 +95,16 @@
 
                     <androidx.appcompat.widget.AppCompatImageView
                         android:id="@+id/ic_place"
-                        android:layout_width="129dp"
-                        android:layout_height="102dp"
-                        android:src="@drawable/ic_place"
+                        android:layout_width="80dp"
+                        android:layout_height="115dp"
+                        android:src="@drawable/ic_event"
                         android:layout_gravity="center"/>
 
                     <TextView
                         android:id="@+id/tv_plae"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="어린이집"
+                        android:text="블럭놀이"
                         android:gravity="center_horizontal"
                         android:textSize="26sp"
                         style="@style/extrabold"
@@ -144,7 +144,7 @@
                         android:id="@+id/tv_title"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="블럭놀이"
+                        android:text="친구"
                         android:gravity="center_horizontal"
                         android:textSize="21sp"
                         android:textColor="#7F7F7F"
@@ -204,26 +204,34 @@
             android:layout_height="match_parent">
 
 
-
-            <ImageButton
-                android:id="@+id/btn_summarize_chat2"
+            <FrameLayout
                 android:layout_width="800dp"
                 android:layout_height="160dp"
-                android:src="@drawable/bg_gray_chat"
-                android:background="@android:color/transparent"
                 android:elevation="1dp"
-                android:layout_gravity="center_horizontal"/>
+                android:layout_gravity="center_horizontal">
 
-            <TextView
-                android:id="@+id/tv_chat"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="오늘 길동이는 어린이집을 다녀왔구나!"
-                style="@style/extrabold"
-                android:textSize="27sp"
-                android:gravity="center"
-                android:elevation="2dp"
-                android:layout_marginTop="60dp"/>
+                <ImageButton
+                    android:id="@+id/btn_summarize_chat2"
+                    android:layout_width="700dp"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/bg_gray_chat"
+                    android:layout_gravity="end"
+                    android:background="@android:color/transparent"/>
+
+                <TextView
+                    android:id="@+id/tv_chat"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="어린이에서 블럭놀이를 하면서 길동이가 좋아하는 버스랑 자동차를 만들었어. 정말 멋있겠다!"
+                    style="@style/extrabold"
+                    android:textSize="27sp"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:layout_marginStart="145dp"
+                    android:layout_marginEnd="80dp"
+                    android:lineSpacingMultiplier="1.5"
+                    android:elevation="2dp"/>
+            </FrameLayout>
 
             <androidx.appcompat.widget.AppCompatImageButton
                 android:id="@+id/btn_next2"

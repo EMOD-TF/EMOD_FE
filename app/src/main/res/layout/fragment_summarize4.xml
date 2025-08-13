@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Diary.Summarize1Fragment"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_today"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="길동이의 하루"
+            android:textSize="37sp"
+            style="@style/extrabold"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="66dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginHorizontal="180dp"
+            android:paddingVertical="45dp"
+            android:gravity="center_vertical"
+            >
+
+
+
+
+
+            <LinearLayout
+                android:id="@+id/ll_event"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_weight="1"
+                android:gravity="center">
+
+                <FrameLayout
+                    android:layout_width="133dp"
+                    android:layout_height="214dp">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="133dp"
+                        android:src="@drawable/ic_small_circle"
+                        android:layout_gravity="center"/>
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/ic_event"
+                        android:layout_width="64dp"
+                        android:layout_height="92dp"
+                        android:src="@drawable/ic_event"
+                        android:layout_gravity="center"/>
+
+                    <TextView
+                        android:id="@+id/tv_event"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="블럭놀이"
+                        android:gravity="center_horizontal"
+                        android:textSize="21sp"
+                        android:textColor="#7F7F7F"
+                        style="@style/extrabold"
+                        android:layout_marginTop="27dp"
+                        android:layout_gravity="center|bottom"/>
+
+                </FrameLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_weight="1"
+                android:gravity="center">
+
+                <FrameLayout
+                    android:layout_width="133dp"
+                    android:layout_height="214dp">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="133dp"
+                        android:src="@drawable/ic_small_circle"
+                        android:layout_gravity="center"/>
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/ic_title"
+                        android:layout_width="75dp"
+                        android:layout_height="92dp"
+                        android:src="@drawable/ic_title"
+                        android:layout_gravity="center"
+                        />
+
+                    <TextView
+                        android:id="@+id/tv_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="블럭놀이"
+                        android:gravity="center_horizontal"
+                        android:textSize="21sp"
+                        android:textColor="#7F7F7F"
+                        style="@style/extrabold"
+                        android:layout_marginTop="27dp"
+                        android:layout_gravity="center|bottom"/>
+
+                </FrameLayout>
+
+            </LinearLayout>
+
+
+
+            <LinearLayout
+                android:id="@+id/ll_emotion"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_weight="1"
+                android:gravity="center">
+
+                <FrameLayout
+                    android:layout_width="133dp"
+                    android:layout_height="214dp">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="133dp"
+                        android:src="@drawable/ic_small_circle"
+                        android:layout_gravity="center"/>
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/ic_emotion"
+                        android:layout_width="86dp"
+                        android:layout_height="78dp"
+                        android:src="@drawable/ic_emotion"
+                        android:layout_gravity="center"/>
+
+                    <TextView
+                        android:id="@+id/tv_emotion"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="블럭놀이"
+                        android:gravity="center_horizontal"
+                        android:textSize="21sp"
+                        android:textColor="#7F7F7F"
+                        style="@style/extrabold"
+                        android:layout_marginTop="27dp"
+                        android:layout_gravity="center|bottom"/>
+
+                </FrameLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_place"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_weight="1"
+                android:gravity="center">
+
+                <FrameLayout
+                    android:layout_width="167dp"
+                    android:layout_height="231dp">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/ic_big_circle"/>
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/ic_place"
+                        android:layout_width="129dp"
+                        android:layout_height="102dp"
+                        android:src="@drawable/ic_place"
+                        android:layout_gravity="center"/>
+
+                    <TextView
+                        android:id="@+id/tv_plae"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="어린이집"
+                        android:gravity="center_horizontal"
+                        android:textSize="26sp"
+                        style="@style/extrabold"
+                        android:layout_marginTop="27dp"
+                        android:layout_gravity="bottom"/>
+                </FrameLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+
+            <ImageButton
+                android:id="@+id/btn_summarize_chat4"
+                android:layout_width="800dp"
+                android:layout_height="160dp"
+                android:src="@drawable/bg_gray_chat"
+                android:background="@android:color/transparent"
+                android:elevation="1dp"
+                android:layout_gravity="center_horizontal"/>
+
+            <TextView
+                android:id="@+id/tv_chat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="오늘 길동이는 어린이집을 다녀왔구나!"
+                style="@style/extrabold"
+                android:textSize="27sp"
+                android:gravity="center"
+                android:elevation="2dp"
+                android:layout_marginTop="60dp"/>
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/btn_next4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_next"
+                android:layout_gravity="center"
+                android:elevation="4dp"
+                android:background="@android:color/transparent"
+                android:layout_marginTop="20dp"/>
+
+            <ImageView
+                android:id="@+id/bg_grass"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/bg_grass"
+                android:layout_gravity="bottom"/>
+
+        </FrameLayout>
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/character_summarize"
+        android:layout_width="164dp"
+        android:layout_height="216dp"
+        android:src="@drawable/lion_character_4x"
+        android:elevation="3dp"
+        android:layout_marginStart="224dp"
+        android:layout_marginBottom="82dp"
+        android:layout_gravity="bottom"/>
+
+
+</FrameLayout>

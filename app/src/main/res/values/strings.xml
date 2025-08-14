@@ -6,4 +6,14 @@
     <string name="summarize2">어린이집에서 블럭놀이를 하면서 길동이가 좋아하는 버스랑 자동차를 만들었어. 정말 멋있었겠다!</string>
     <string name="summarize3">하지만, 열심히 만든 버스랑 자동차 블럭을 지나가던 친구가 실수로 넘어뜨렸지?</string>
     <string name="summarize4">길동이가 열심히 만든 버스랑 자동차가 망가져서, 길동이는 엄청 속상했을 거야.</string>
+
+    <string name="onboarding_title_1">우리 아이 맞춤형 감정 학습</string>
+    <string name="onboarding_title_2">이모디와 함께 해요!</string>
+
+    <string name="emod_benefit_title">이모디, 이런 점이 좋아요!</string>
+    <string name="emod_benefit_1">AI가 우리 아이 맞춤\n감정 커리큘럼을\n설계해줘요.</string>
+    <string name="emod_benefit_2">매일의 대화를 통해\n어휘력과 감정 표현\n습관이 자라나요.</string>
+    <string name="emod_benefit_3">감정 리포트로\n아이의 변화 과정을\n한눈에 볼 수 있어요.</string>
+
+    <string name="to_next">다음으로</string>
 </resources>

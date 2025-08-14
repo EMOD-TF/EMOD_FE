@@ -4,155 +4,173 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#f5f5f5">
+    android:background="@color/white2">
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/imageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="-100dp"
-        android:contentDescription="Background Image"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/ic_ob_bg" />
-
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="1000dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="-15dp"
-        android:contentDescription="background Cloud Image"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_ob_cloud"
-        app:tint="@color/green_light" />
-
-
-
-    <Button
-        android:id="@+id/button"
-        android:layout_width="250dp"
-        android:layout_height="65dp"
-        android:layout_marginBottom="84dp"
-        android:fontFamily="@font/nanumsquareroundextrabold"
-        android:text="로그인"
-        android:textColor="#000000"
-        android:textSize="25sp"
-        app:backgroundTint="@color/primary_normal"
-        app:cornerRadius="15dp"
+        android:src="@drawable/bg_grass_2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <TextView
-        android:id="@+id/textView2"
+    <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="108dp"
-        android:fontFamily="@font/nanumsquareroundextraboldotf"
-        android:text="이모디, 이런 점이 좋아요!"
-        android:textSize="38sp"
+        android:layout_marginTop="54dp"
+        android:src="@drawable/bg_clouds"
+        app:tint="@color/green_light"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <TextView
+        android:id="@+id/textView"
+        style="@style/extrabold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:letterSpacing="0.06"
+        android:lineHeight="64dp"
+        android:text="@string/emod_benefit_title"
+        android:textColor="@color/black"
+        android:textSize="37.33sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="240dp"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/button"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2">
+        app:layout_constraintStart_toStartOf="parent">
+
         <LinearLayout
-            android:layout_width="300dp"
-            android:layout_height="375dp"
+            android:layout_width="266.67dp"
+            android:layout_height="333.33dp"
+            android:background="@drawable/rounded_background"
+            android:gravity="center"
             android:orientation="vertical"
-            android:gravity="center_horizontal"
-            android:padding="38dp"
-            android:background="@drawable/gradient_card">
+            android:paddingHorizontal="40dp"
+            android:paddingVertical="30dp">
+
             <TextView
+                style="@style/extrabold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="1"
-                android:fontFamily="@font/nanumsquareroundextrabold"
-                android:textSize="60sp"
-                android:textStyle="bold"
-                android:textColor="#000000"/>
+                android:textColor="@color/black"
+                android:textSize="53.33sp" />
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="34.67dp" />
 
             <TextView
+                style="@style/bold"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
-                android:fontFamily="@font/nanumsquareroundbold"
-                android:gravity="center"
-                android:lineHeight="50dp"
-                android:text="AI가 우리 아이 맞춤 감정 커리큘럼을 설계해줘요."
-                android:textColor="#000000"
-                android:textSize="27sp" />
+                android:layout_height="120dp"
+                android:letterSpacing="0.05"
+                android:lineHeight="40dp"
+                android:text="@string/emod_benefit_1"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="21.33sp" />
         </LinearLayout>
+
         <Space
-            android:layout_width="40dp"
-            android:layout_height="1dp" />
+            android:layout_width="33.33dp"
+            android:layout_height="wrap_content" />
+
         <LinearLayout
-            android:layout_width="300dp"
-            android:layout_height="375dp"
+            android:layout_width="266.67dp"
+            android:layout_height="333.33dp"
+            android:background="@drawable/rounded_background"
+            android:gravity="center"
             android:orientation="vertical"
-            android:gravity="center_horizontal"
-            android:padding="38dp"
-            android:background="@drawable/gradient_card">
+            android:paddingHorizontal="40dp"
+            android:paddingVertical="30dp">
+
             <TextView
+                style="@style/extrabold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="2"
-                android:fontFamily="@font/nanumsquareroundextrabold"
-                android:textSize="60sp"
-                android:textStyle="bold"
-                android:textColor="#000000"/>
+                android:textColor="@color/black"
+                android:textSize="53.33sp" />
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="34.67dp" />
 
             <TextView
+                style="@style/bold"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
-                android:fontFamily="@font/nanumsquareroundbold"
-                android:gravity="center"
-                android:lineHeight="50dp"
-                android:text="매일의 대화를 통해 어휘력과 감정 표현 습관이 자라나요."
-                android:textColor="#000000"
-                android:textSize="27sp" />
+                android:layout_height="120dp"
+                android:letterSpacing="0.05"
+                android:lineHeight="40dp"
+                android:text="@string/emod_benefit_2"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="21.33sp" />
         </LinearLayout>
+
         <Space
-            android:layout_width="40dp"
-            android:layout_height="1dp" />
+            android:layout_width="33.33dp"
+            android:layout_height="wrap_content" />
+
         <LinearLayout
-            android:layout_width="300dp"
-            android:layout_height="375dp"
+            android:layout_width="266.67dp"
+            android:layout_height="333.33dp"
+            android:background="@drawable/rounded_background"
+            android:gravity="center"
             android:orientation="vertical"
-            android:gravity="center_horizontal"
-            android:padding="38dp"
-            android:background="@drawable/gradient_card">
+            android:paddingHorizontal="40dp"
+            android:paddingVertical="30dp">
+
             <TextView
+                style="@style/extrabold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="3"
-                android:fontFamily="@font/nanumsquareroundextrabold"
-                android:textSize="60sp"
-                android:textStyle="bold"
-                android:textColor="#000000"/>
+                android:textColor="@color/black"
+                android:textSize="53.33sp" />
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="34.67dp" />
 
             <TextView
+                style="@style/bold"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
-                android:fontFamily="@font/nanumsquareroundbold"
-                android:gravity="center"
-                android:lineHeight="50dp"
-                android:text="감정 리포트로\n아이의 변화 과정을\n한눈에 볼 수 있어요."
-                android:textColor="#000000"
-                android:textSize="27sp" />
+                android:layout_height="120dp"
+                android:letterSpacing="0.05"
+                android:lineHeight="40dp"
+                android:text="@string/emod_benefit_3"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="21.33sp" />
         </LinearLayout>
     </LinearLayout>
+
+    <Button
+        android:layout_width="266.67dp"
+        android:layout_height="93.33dp"
+        android:layout_marginTop="76dp"
+        android:backgroundTint="@color/primary_normal"
+        style="@style/extrabold"
+        android:text="@string/to_next"
+        android:textColor="@color/black"
+        android:textSize="26.67sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

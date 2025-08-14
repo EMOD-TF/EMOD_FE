@@ -42,7 +42,7 @@
         app:layout_constraintTop_toBottomOf="@id/tv_ment"/>
 
     <FrameLayout
-        android:layout_width="666dp"
+        android:layout_width="700dp"
         android:layout_height="600dp"
         app:layout_constraintStart_toEndOf="@id/img_chapter"
         app:layout_constraintTop_toTopOf="parent"
@@ -50,16 +50,57 @@
         android:layout_marginTop="67dp"
         >
 
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:src="@drawable/img_kid_face"
-            android:elevation="4dp"/>
+        <FrameLayout
+            android:layout_width="333dp"
+            android:layout_height="100dp"
+            android:elevation="20dp"
+            android:layout_gravity="end"
+            android:layout_marginStart="-30dp"
+            android:layout_marginTop="-10dp">
 
-        <androidx.camera.view.PreviewView
-            android:id="@+id/img_kid_expression"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            <ImageView
+                android:id="@+id/bg_speech_bubble"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/bg_expression"/>
+
+            <TextView
+                android:id="@+id/tv_expression"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="얼굴 모양에\n길동이의 얼굴을 맞춰봐!"
+                android:textSize="19sp"
+                style="@style/extrabold"
+                android:lineSpacingMultiplier="1.5"
+                android:layout_marginBottom="20dp"
+                android:gravity="center"/>
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="666dp"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:layout_width="666dp"
+                android:layout_height="match_parent"
+                android:src="@drawable/img_kid_face"
+                android:elevation="4dp"/>
+
+            <ImageView
+                android:id="@+id/ic_smile"
+                android:layout_width="363dp"
+                android:layout_height="363dp"
+                android:src="@drawable/ic_smile"
+                android:layout_gravity="center"
+                android:elevation="4dp"/>
+
+            <androidx.camera.view.PreviewView
+                android:id="@+id/img_kid_expression"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
+        </FrameLayout>
 
     </FrameLayout>
 

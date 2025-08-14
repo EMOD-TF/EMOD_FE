@@ -1,7 +1,11 @@
 package com.example.hackathon.Diary
 
+import android.graphics.Color
 import android.graphics.Outline
 import android.os.Bundle
+import android.text.Spannable
+import android.text.SpannableString
+import android.text.style.ForegroundColorSpan
 import android.util.TypedValue
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -26,6 +30,7 @@ class ExpressionFragment : BaseFragment<FragmentExpressionBinding>(FragmentExpre
         super.onViewCreated(view, savedInstanceState)
 
         val previewView = binding.imgKidExpression
+        val smile = binding.icSmile
 
         // previewView 띄우기
         val cameraProviderFuture = ProcessCameraProvider.getInstance(requireContext())
@@ -53,6 +58,19 @@ class ExpressionFragment : BaseFragment<FragmentExpressionBinding>(FragmentExpre
             }
         }
         previewView.clipToOutline = true
+
+
+        // 감정 폰트 일부 색 바꾸기
+        val fullText = "기분이 속상할 땐,\n어떤 표정을 지을까?"
+        val targetText = "속상할 땐"
+        val spannable = SpannableString(fullText)
+        val start = fullText.indexOf(targetText)
+        val end = start + targetText.length
+        spannable.setSpan(
+            ForegroundColorSpan(Color.parseColor("#0080FF")),
+            start, end, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+        )
+        binding.tvMent.text = spannable
     }
 
 }

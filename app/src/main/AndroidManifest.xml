@@ -25,12 +25,7 @@
         android:theme="@style/Theme.Hackathon"
         tools:targetApi="31">
         <activity
-            android:name=".OnboardingActivity"
-            android:exported="false" />
-        <activity android:name=".LoginActivity"
-            android:exported="false" />
-        <activity
-            android:name=".Diary.DiaryActivity"
+            android:name=".HomeActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -39,6 +34,15 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".OnboardingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".LoginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Diary.DiaryActivity"
+            android:exported="false"/>
+        <activity
             android:name=".VoiceActivity"
             android:exported="false" />
         <activity
@@ -46,10 +50,7 @@
             android:exported="false" />
         <activity
             android:name=".MainActivity"
-            android:exported="false">
-
-        </activity>
-
+            android:exported="false"/>
         <meta-data
             android:name="com.google.mlkit.vision.DEPENDENCIES"
             android:value="face" />

@@ -3,17 +3,21 @@ package com.example.hackathon.Diary
 import android.graphics.Outline
 import android.os.Bundle
 import android.util.TypedValue
+import androidx.fragment.app.Fragment
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.view.ViewOutlineProvider
 import androidx.camera.core.CameraSelector
 import androidx.camera.core.Preview
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.core.content.ContextCompat
 import com.example.hackathon.BaseFragment
-import com.example.hackathon.databinding.FragmentChatBinding
+import com.example.hackathon.R
+import com.example.hackathon.databinding.FragmentExpressionBinding
+import com.example.hackathon.databinding.FragmentSummarize4Binding
 
-class ChatFragment : BaseFragment<FragmentChatBinding>(FragmentChatBinding::inflate) {
-
+class ExpressionFragment : BaseFragment<FragmentExpressionBinding>(FragmentExpressionBinding::inflate) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -21,9 +25,7 @@ class ChatFragment : BaseFragment<FragmentChatBinding>(FragmentChatBinding::infl
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        requireActivity().supportFragmentManager.popBackStack()
-
-        val previewView = binding.imgKidFace
+        val previewView = binding.imgKidExpression
 
         // previewView 띄우기
         val cameraProviderFuture = ProcessCameraProvider.getInstance(requireContext())
@@ -51,12 +53,6 @@ class ChatFragment : BaseFragment<FragmentChatBinding>(FragmentChatBinding::infl
             }
         }
         previewView.clipToOutline = true
-
-
-        // Click Listener
-        binding.icTurnoff.setOnClickListener {
-            (activity as DiaryActivity).setFragment(Summarize1Fragment())
-        }
     }
 
 }

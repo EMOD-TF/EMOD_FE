@@ -10,7 +10,7 @@
         android:id="@+id/ic_character"
         android:layout_width="213dp"
         android:layout_height="213dp"
-        android:layout_marginTop="157px"
+        android:layout_marginTop="85dp"
         android:src="@drawable/img_lion"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

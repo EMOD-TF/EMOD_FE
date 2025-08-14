@@ -1,0 +1,15 @@
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="#26000000"/> <!-- 그림자색 (투명 검정) -->
+            <corners android:radius="16dp"/>
+            <padding android:left="1.5dp" android:right="1.5dp" android:bottom="2dp"/>
+        </shape>
+    </item>
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="#99FFFAE9"/>
+            <corners android:radius="16dp"/>
+        </shape>
+    </item>
+</layer-list>

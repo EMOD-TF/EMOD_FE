@@ -64,7 +64,7 @@
                         android:id="@+id/tv_event"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="블럭놀이"
+                        android:text="어린이집"
                         android:gravity="center_horizontal"
                         android:textSize="21sp"
                         android:textColor="#7F7F7F"
@@ -149,6 +149,7 @@
                         android:text="친구"
                         android:gravity="center_horizontal"
                         android:textSize="26sp"
+                        android:textColor="#0080FF"
                         style="@style/extrabold"
                         android:layout_marginTop="27dp"
                         android:layout_gravity="bottom"/>
@@ -185,7 +186,7 @@
                         android:id="@+id/tv_emotion"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="블럭놀이"
+                        android:text="속상함"
                         android:gravity="center_horizontal"
                         android:textSize="21sp"
                         android:textColor="#7F7F7F"
@@ -203,33 +204,66 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
+
+
             <FrameLayout
                 android:layout_width="800dp"
-                android:layout_height="160dp"
+                android:layout_height="200dp"
                 android:elevation="1dp"
                 android:layout_gravity="center_horizontal">
 
                 <ImageButton
-                    android:id="@+id/btn_summarize_chat3"
-                    android:layout_width="700dp"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/bg_gray_chat"
+                    android:layout_width="719dp"
+                    android:layout_height="166dp"
+                    android:src="@drawable/bg_third_chat"
+                    android:background="@drawable/box_shadow"
+                    android:layout_marginTop="32dp"
+                    android:layout_marginEnd="39dp"
                     android:layout_gravity="end"
-                    android:background="@android:color/transparent"/>
+                    />
 
-                <TextView
-                    android:id="@+id/tv_chat"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="하지만, 열심히 만든 버스랑 자동차 블럭을 지나가던 친구가 실수로 넘어뜨렸지?"
-                    style="@style/extrabold"
-                    android:textSize="27sp"
-                    android:layout_gravity="center"
-                    android:gravity="center"
-                    android:layout_marginStart="145dp"
-                    android:layout_marginEnd="80dp"
-                    android:lineSpacingMultiplier="1.5"
-                    android:elevation="2dp"/>
+                <ImageButton
+                    android:layout_width="754dp"
+                    android:layout_height="166dp"
+                    android:src="@drawable/bg_second_chat"
+                    android:background="@drawable/box_shadow"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="19dp"
+                    android:layout_gravity="end"
+                    />
+
+                <FrameLayout
+                    android:layout_width="700dp"
+                    android:layout_height="166dp"
+                    android:layout_gravity="end"
+                    >
+
+
+                    <ImageButton
+                        android:id="@+id/btn_summarize_chat3"
+                        android:layout_width="match_parent"
+                        android:layout_height="166dp"
+                        android:background="@drawable/box_shadow"
+                        android:src="@drawable/bg_gray_chat" />
+
+                    <TextView
+                        android:id="@+id/tv_chat"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/summarize3"
+                        style="@style/extrabold"
+                        android:textSize="27sp"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:layout_marginStart="75dp"
+                        android:layout_marginEnd="80dp"
+                        android:lineSpacingMultiplier="1.5"
+                        android:elevation="2dp"/>
+
+                </FrameLayout>
+
+
+
             </FrameLayout>
 
             <androidx.appcompat.widget.AppCompatImageButton
@@ -240,7 +274,7 @@
                 android:layout_gravity="center"
                 android:elevation="4dp"
                 android:background="@android:color/transparent"
-                android:layout_marginTop="20dp"/>
+                android:layout_marginTop="78dp"/>
 
             <ImageView
                 android:id="@+id/bg_grass"

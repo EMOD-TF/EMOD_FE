@@ -1,32 +1,22 @@
 package com.example.hackathon.Diary
 
-import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.activity.enableEdgeToEdge
-import androidx.fragment.app.commit
 import com.example.hackathon.BaseFragment
 import com.example.hackathon.R
-import com.example.hackathon.databinding.FragmentCallBinding
+import com.example.hackathon.databinding.FragmentSummarize2Binding
+import com.example.hackathon.databinding.FragmentSummarize4Binding
 
-class CallFragment : BaseFragment<FragmentCallBinding>(FragmentCallBinding::inflate) {
-
+class Summarize4Fragment : BaseFragment<FragmentSummarize4Binding>(FragmentSummarize4Binding::inflate) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        requireActivity().enableEdgeToEdge()
-
-        binding.btnCall.setOnClickListener {
-            (activity as DiaryActivity).setFragment(ChatFragment())
-        }
-
     }
+
 }

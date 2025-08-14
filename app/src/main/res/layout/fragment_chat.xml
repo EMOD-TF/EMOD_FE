@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".Diary.ChatFragment">
+
+    <ImageView
+        android:id="@+id/img_character"
+        android:layout_width="366dp"
+        android:layout_height="483dp"
+        android:layout_marginStart="117dp"
+        android:layout_marginTop="82dp"
+        android:src="@drawable/lion_character_4x"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    
+    <LinearLayout
+        android:layout_width="319dp"
+        android:layout_height="67dp"
+        android:layout_marginStart="130dp"
+        android:layout_marginBottom="70dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_again"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@drawable/btn_again"
+            android:text="질문 다시 듣기"
+            android:textSize="20sp"
+            android:layout_marginEnd="13dp"
+            android:layout_weight="1"
+            style="@style/bold"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_finish"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@drawable/btn_finish"
+            android:text="답변 끝내기"
+            android:textSize="20sp"
+            android:layout_weight="1"
+            android:layout_marginStart="13dp"
+            style="@style/bold"/>
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/img_chat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/img_chat"
+        android:layout_marginTop="90dp"
+        android:layout_marginStart="32dp"
+        app:layout_constraintStart_toEndOf="@id/img_character"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <FrameLayout
+        android:layout_width="333dp"
+        android:layout_height="266dp"
+        android:layout_marginTop="45dp"
+        android:layout_marginEnd="111dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/img_chat">
+
+        <androidx.camera.view.PreviewView
+            android:id="@+id/img_kid_face"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/img_kid_face"/>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/img_kid_face"/>
+
+
+    </FrameLayout>
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/ic_turnoff"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_turnoff"
+        android:background="@android:color/transparent"
+        android:layout_marginBottom="66dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,79 +4,69 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/green_light"
-    >
+    android:background="@color/green_light">
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/imageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="-100dp"
-        android:contentDescription="Background Image"
+        android:src="@drawable/bg_grass_2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/ic_ob_bg" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="1000dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="-15dp"
-        android:contentDescription="background Cloud Image"
+        android:layout_marginTop="54dp"
+        android:src="@drawable/bg_clouds"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:layout_width="1056dp"
+        android:layout_height="382dp"
+        android:layout_marginBottom="213dp"
+        android:src="@drawable/all_character_4x"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_ob_cloud" />
+        android:layout_marginTop="100dp">
 
-    <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="1000dp"
-        android:layout_height="wrap_content"
-        android:contentDescription="character Image"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHeight="595dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageView3"
-        app:layout_constraintVertical_bias="0.593"
-        app:srcCompat="@drawable/ic_ob_ch" />
+        <TextView
+            style="@style/bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:letterSpacing="0.06"
+            android:lineHeight="64dp"
+            android:text="@string/onboarding_title_1"
+            android:textColor="@color/black"
+            android:textSize="29.33sp" />
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="250dp"
-        android:layout_height="88dp"
-        android:layout_marginBottom="88dp"
-        android:fontFamily="@font/nanumsquareroundextrabold"
-        android:text="시작하기"
-        android:textColor="#000000"
-        android:textSize="25sp"
-        app:backgroundTint="@color/primary_normal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/imageView2"
-        app:layout_constraintStart_toStartOf="@+id/imageView2" />
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="16dp" />
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="우리 아이 맞춤형 감정 학습"
-        android:fontFamily="@font/nanumsquareroundboldotf"
-        android:textSize="30sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageView4" />
+        <TextView
+            style="@style/extrabold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:letterSpacing="0.06"
+            android:lineHeight="64dp"
+            android:text="@string/onboarding_title_2"
+            android:textColor="@color/black"
+            android:textSize="42.67sp" />
+    </LinearLayout>
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:fontFamily="@font/nanumsquareroundextraboldotf"
-        android:text="이모디와 함께 해요!"
-        android:textSize="43sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

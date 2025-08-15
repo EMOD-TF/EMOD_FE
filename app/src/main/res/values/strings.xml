@@ -16,4 +16,6 @@
     <string name="emod_benefit_3">감정 리포트로\n아이의 변화 과정을\n한눈에 볼 수 있어요.</string>
 
     <string name="to_next">다음으로</string>
+
+    <string name="placeholder_text">EMOD</string>
 </resources>

@@ -15,13 +15,15 @@ class OnboardingActivity : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(binding.root)
 
-        // '시작하기' 버튼에 클릭 리스너 설정
-        binding.button.setOnClickListener {
-            val intent = Intent(this, LoginActivity::class.java)
-            // login 화면으로 이동
-            startActivity(intent)
-            // 현재 액티비티 종료
-            finish()
-        }
+        // 화면을 클릭하거나 5초 후에 로그인 화면으로 이동
+        binding.root.postDelayed({
+            moveToLogin()
+        }, 5000)
+    }
+
+    fun moveToLogin() {
+        val intent = Intent(this, LoginActivity::class.java)
+        startActivity(intent)
+        finish() // 현재 액티비티 종료
     }
 }

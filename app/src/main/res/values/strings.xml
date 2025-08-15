@@ -18,4 +18,11 @@
     <string name="to_next">다음으로</string>
 
     <string name="placeholder_text">EMOD</string>
+
+    <string-array name="signup_step">
+        <item>아이와 함께 할\n캐릭터를 골라주세요.</item>
+        <item>아이의 정보를\n입력해주세요.</item>
+        <item>맞춤 커리큘럼을 위한\n체크리스트를 작성해주세요.</item>
+        <item>아이의 학습 환경을\n모두 선택해주세요.</item>
+    </string-array>
 </resources>

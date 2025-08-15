@@ -3,17 +3,95 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:showIn="@layout/activity_signup"
+    tools:context=".SignUp.SignupActivity">
 
-    <TextView
-        style="@style/extrabold"
+    <ImageView
+        android:id="@+id/character_full"
+        android:layout_width="wrap_content"
+        android:layout_height="280dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/img_parrot_full_4x"
+        android:layout_marginBottom="15.33dp"
+        android:paddingVertical="30dp"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="1단계"
-        android:textSize="100dp"
+        android:layout_marginBottom="23dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:gravity="center">
+
+        <ImageButton
+            android:id="@+id/ch_btn_left"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:scaleType="fitCenter"
+            android:src="@drawable/btn_direction" />
+
+        <Space
+            android:layout_width="34.67dp"
+            android:layout_height="0dp" />
+
+        <ImageButton
+            android:id="@+id/ch_slot_1"
+            android:layout_width="149.33dp"
+            android:layout_height="149.33dp"
+            android:background="@drawable/bg_circle"
+            android:outlineProvider="background"
+            android:padding="15dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/img_lion_head_4x" />
+
+        <Space
+            android:layout_width="32.67dp"
+            android:layout_height="0dp" />
+
+        <ImageButton
+            android:id="@+id/ch_slot_2"
+            android:layout_width="149.33dp"
+            android:layout_height="149.33dp"
+            android:background="@drawable/bg_circle"
+            android:outlineProvider="background"
+            android:padding="15dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/img_cat_head_4x" />
+
+        <Space
+            android:layout_width="32.67dp"
+            android:layout_height="0dp" />
+
+        <ImageButton
+            android:id="@+id/ch_slot_3"
+            android:layout_width="149.33dp"
+            android:layout_height="149.33dp"
+            android:background="@drawable/bg_circle"
+            android:outlineProvider="background"
+            android:padding="15dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/img_bear_head_4x" />
+
+        <Space
+            android:layout_width="34.67dp"
+            android:layout_height="0dp" />
+
+        <ImageButton
+            android:id="@+id/ch_btn_right"
+            android:rotation="180"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:scaleType="fitCenter"
+            android:src="@drawable/btn_direction" />
+    </LinearLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

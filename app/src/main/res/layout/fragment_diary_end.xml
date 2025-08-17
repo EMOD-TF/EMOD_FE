@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Diary.CallFragment">
+
+    <ImageView
+        android:id="@+id/ic_character"
+        android:layout_width="213dp"
+        android:layout_height="213dp"
+        android:layout_marginTop="85dp"
+        android:src="@drawable/img_lion"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="디모"
+        android:textSize="37sp"
+        style="@style/extrabold"
+        android:layout_marginTop="21dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ic_character" />
+
+    <ImageView
+        android:id="@+id/bg_chat"
+        android:layout_width="400dp"
+        android:layout_height="121dp"
+        android:src="@drawable/bg_turnoff"
+        android:layout_marginBottom="10dp"
+        android:elevation="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/btn_turnoff"/>
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/btn_turnoff"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        android:background="@android:color/transparent"
+        android:src="@drawable/ic_turnoff"
+        android:layout_marginBottom="66dp"
+        android:scaleType="fitXY"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

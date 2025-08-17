@@ -1,4 +1,4 @@
-package com.example.hackathon.SignUp
+package com.example.hackathon.ui.signUp
 
 import androidx.lifecycle.ViewModel
 import org.json.JSONObject

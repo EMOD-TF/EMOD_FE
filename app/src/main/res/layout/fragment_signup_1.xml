@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:showIn="@layout/activity_signup"
-    tools:context=".SignUp.SignupActivity">
+    tools:context=".ui.signUp.SignupActivity">
 
     <ImageView
         android:id="@+id/character_full"

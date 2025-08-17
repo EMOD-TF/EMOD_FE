@@ -1,4 +1,4 @@
-package com.example.hackathon.SignUp.adapter
+package com.example.hackathon.ui.signUp.adapter
 
 import android.view.LayoutInflater
 import android.view.View

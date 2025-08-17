@@ -29,6 +29,12 @@ class AuthDataStore(private val context: Context) {
         }
     }
 
+    suspend fun setProfileCompleted(completed: Boolean) {
+        context.dataStore.edit { prefs ->
+            prefs[KEY_PROFILE_COMPLETED] = completed
+        }
+    }
+
     suspend fun clear() {
         context.dataStore.edit { it.clear() }
     }

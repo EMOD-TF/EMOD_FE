@@ -1,4 +1,4 @@
-package com.example.hackathon.SignUp
+package com.example.hackathon.ui.signUp
 
 import android.os.Bundle
 import android.view.View

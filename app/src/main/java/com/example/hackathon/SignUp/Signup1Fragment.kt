@@ -3,6 +3,7 @@ package com.example.hackathon.SignUp
 import android.graphics.Rect
 import android.os.Bundle
 import android.view.View
+import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearSnapHelper
@@ -15,6 +16,7 @@ import com.example.hackathon.model.AppCharacter
 class Signup1Fragment
     : BaseFragment<FragmentSignup1Binding>(FragmentSignup1Binding::inflate) {
 
+    private val vm: SignupViewModel by activityViewModels()
     private val data = AppCharacter.values().toList()
 
     // 어댑터는 lazy로 안전하게 초기화
@@ -28,6 +30,7 @@ class Signup1Fragment
             field = ((value % data.size) + data.size) % data.size // 순환
             adapter.selected = field
             binding.characterFull.setImageResource(data[field].fullRes)
+            vm.character = data[field]
             binding.rvCharacters.smoothScrollToPosition(field)
         }
 

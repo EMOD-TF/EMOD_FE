@@ -5,14 +5,19 @@ import android.os.Bundle
 import android.view.View
 import android.widget.NumberPicker
 import android.widget.Toast
+import androidx.core.widget.doAfterTextChanged
+import androidx.fragment.app.activityViewModels
 import com.example.hackathon.BaseFragment
 import com.example.hackathon.databinding.FragmentSignup2Binding
 import java.util.Calendar
+import kotlin.getValue
 import kotlin.math.max
 import kotlin.math.min
 
 class Signup2Fragment
     : BaseFragment<FragmentSignup2Binding>(FragmentSignup2Binding::inflate) {
+
+    private val vm: SignupViewModel by activityViewModels()
 
     data class ChildInfo(
         val name: String,
@@ -29,8 +34,14 @@ class Signup2Fragment
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.etName.doAfterTextChanged {
+            vm.name = it?.toString()?.trim().orEmpty()
+        }
+
         // 초기 생년월 표시
         updateBirthLabel()
+        vm.birthYear = selectedYear
+        vm.birthMonth = selectedMonth
 
         // 생년월 선택 (컨테이너/텍스트 둘 다 클릭 가능)
         binding.birthContainer.setOnClickListener { showYearMonthPicker() }
@@ -39,6 +50,8 @@ class Signup2Fragment
         // 성별
         binding.rgGender.setOnCheckedChangeListener { _, _ ->
             selectedGender = if (binding.rbMan.isChecked) Gender.MAN else Gender.WOMAN
+            vm.gender = if (binding.rbMan.isChecked)
+                SignupViewModel.Gender.MALE else SignupViewModel.Gender.FEMALE
         }
     }
 
@@ -85,6 +98,8 @@ class Signup2Fragment
                 selectedYear = yearPicker.value
                 selectedMonth = monthPicker.value
                 updateBirthLabel()
+                vm.birthYear = selectedYear          // ✅ 저장
+                vm.birthMonth = selectedMonth
                 d.dismiss()
             }
             .setNegativeButton("취소", null)

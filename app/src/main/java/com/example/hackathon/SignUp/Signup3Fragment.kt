@@ -3,6 +3,7 @@ package com.example.hackathon.SignUp
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.fragment.app.activityViewModels
 import com.example.hackathon.BaseFragment
 import com.example.hackathon.R
 import com.example.hackathon.databinding.FragmentSignup3Binding
@@ -10,6 +11,7 @@ import com.example.hackathon.databinding.FragmentSignup3Binding
 class Signup3Fragment
     : BaseFragment<FragmentSignup3Binding>(FragmentSignup3Binding::inflate) {
 
+    private val vm: SignupViewModel by activityViewModels()
     private val questions by lazy {
         resources.getStringArray(R.array.signup_step_3_questions)
     }
@@ -88,6 +90,10 @@ class Signup3Fragment
     private fun select(answerIndex: Int) {
         selections[qIndex] = answerIndex
         setChecked(answerIndex)
+        // 즉시 ViewModel에도 반영(UX상 안정적)
+        val answers = resources.getStringArray(answerArrays[qIndex])
+        val picked = answers.getOrNull(answerIndex) ?: return
+        if (qIndex == 0) vm.q1 = picked else if (qIndex == 1) vm.q2 = picked
     }
 
     /** 라디오 체크 상태 일괄 반영 */
@@ -110,6 +116,9 @@ class Signup3Fragment
             return false
         }
         selections[qIndex] = chosen
+        val answers = resources.getStringArray(answerArrays[qIndex])
+        val picked = answers.getOrNull(chosen) ?: ""
+        if (qIndex == 0) vm.q1 = picked else if (qIndex == 1) vm.q2 = picked
         return true
     }
 }

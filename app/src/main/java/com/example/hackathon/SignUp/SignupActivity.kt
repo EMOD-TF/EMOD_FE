@@ -7,7 +7,9 @@ import android.view.View
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.viewModels
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.commit
@@ -22,6 +24,8 @@ class SignupActivity: AppCompatActivity() {
     private val stepTexts by lazy {
         resources.getStringArray(R.array.signup_step)
     }
+
+    private val vm: SignupViewModel by viewModels()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,6 +44,10 @@ class SignupActivity: AppCompatActivity() {
 
         // 3. 버튼 클릭 시 단계 변경 및 UI 업데이트
         binding.btnRight.setOnClickListener {
+            if (!vm.isStepValid(currentStep)) {
+                Toast.makeText(this, "필수 정보를 입력해주세요.", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
             if (currentStep < 5) {
                 currentStep++
                 updateUIForCurrentStep()

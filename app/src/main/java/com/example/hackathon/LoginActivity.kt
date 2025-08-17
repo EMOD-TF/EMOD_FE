@@ -1,8 +1,10 @@
 package com.example.hackathon
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import com.example.hackathon.SignUp.SignupActivity
 import com.example.hackathon.databinding.ActivityLoginBinding
 
 
@@ -15,6 +17,15 @@ class LoginActivity : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(binding.root)
 
-        // 로그인 버튼 클릭 시 API 호출
+        // 로그인 버튼 클릭 시 메인으로 이동
+        binding.button.setOnClickListener {
+            moveToSignUp()
+        }
+    }
+
+    private fun moveToSignUp() {
+        val intent = Intent(this, SignupActivity::class.java)
+        startActivity(intent)
+        finish() // 현재 액티비티 종료
     }
 }

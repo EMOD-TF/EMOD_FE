@@ -1,9 +1,56 @@
 <resources>
     <string name="app_name">Hackathon</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="summarize1">오늘 길동이는 어린이집에 다녀왔구나!</string>
     <string name="summarize2">어린이집에서 블럭놀이를 하면서 길동이가 좋아하는 버스랑 자동차를 만들었어. 정말 멋있었겠다!</string>
     <string name="summarize3">하지만, 열심히 만든 버스랑 자동차 블럭을 지나가던 친구가 실수로 넘어뜨렸지?</string>
     <string name="emotion">길동이는 오늘 그런 일이 있어서 슬펐겠구나.그럼 이제 슬플 땐 어떻게 표현해야하는지 알아볼까?</string>
+    <string name="summarize4">길동이가 열심히 만든 버스랑 자동차가 망가져서, 길동이는 엄청 속상했을 거야.</string>
+
+    <string name="onboarding_title_1">우리 아이 맞춤형 감정 학습</string>
+    <string name="onboarding_title_2">이모디와 함께 해요!</string>
+
+    <string name="emod_benefit_title">이모디, 이런 점이 좋아요!</string>
+    <string name="emod_benefit_1">AI가 우리 아이 맞춤\n감정 커리큘럼을\n설계해줘요.</string>
+    <string name="emod_benefit_2">매일의 대화를 통해\n어휘력과 감정 표현\n습관이 자라나요.</string>
+    <string name="emod_benefit_3">감정 리포트로\n아이의 변화 과정을\n한눈에 볼 수 있어요.</string>
+
+    <string name="to_next">다음으로</string>
+    <string name="to_home">홈으로</string>
+
+    <string name="placeholder_text">EMOD</string>
+
+    <string-array name="signup_step">
+        <item>아이와 함께 할\n캐릭터를 골라주세요.</item>
+        <item>아이의 정보를\n입력해주세요.</item>
+        <item>맞춤 커리큘럼을 위한\n체크리스트를 작성해주세요.</item>
+        <item>아이의 학습 환경을\n모두 선택해주세요.</item>
+    </string-array>
+
+    <string-array name="signup_step_3_questions">
+        <item>Q1. 아이는 자신의 감정을 말로 표현할 수 있나요?</item>
+        <item>Q2. 아이는 대화에 어느 정도 집중할 수 있나요?</item>
+    </string-array>
+
+    <string-array name="signup_step_3_q1_answers">
+        <item>거의 표현하지 못해요.</item>
+        <item>짧은 단어나 문장으로 감정을 설명해요.</item>
+        <item>상황에 맞추어 감정을 자연스럽게 표현해요.</item>
+    </string-array>
+
+    <string-array name="signup_step_3_q2_answers">
+        <item>3분 이내에 자주 산만해져요.</item>
+        <item>5분 정도는 비교적 집중해요.</item>
+        <item>10분 이상 대화 흐름을 끝까지 따라요.</item>
+    </string-array>
+
+    <string name="kindergarten">유치원 / 어린이집</string>
+    <string name="school">초등학교</string>
+    <string name="building">발달 · 복지센터</string>
+    <string name="home">집</string>
+    
+    <string name="signup_complete_subtitle">우리 아이 정보 등록이 완료되었어요!</string>
+    <string name="signup_complete_title1">이모디와 함께, </string>
+    <string name="signup_complete_title2">의 마음이 자라나요!</string>
+
 </resources>

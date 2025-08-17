@@ -1,20 +1,16 @@
-package com.example.hackathon.SignUp
+package com.example.hackathon.ui.signUp
 
 import androidx.fragment.app.Fragment
 import android.os.Bundle
 import android.util.TypedValue
 import android.view.View
-import android.widget.Button
-import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
-import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.constraintlayout.widget.ConstraintSet
-import androidx.core.view.isVisible
 import androidx.fragment.app.commit
 import com.example.hackathon.R
 import com.example.hackathon.databinding.ActivitySignupBinding

@@ -1,4 +1,4 @@
-package com.example.hackathon.SignUp
+package com.example.hackathon.ui.signUp
 
 import android.graphics.Rect
 import android.os.Bundle
@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearSnapHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.example.hackathon.BaseFragment
-import com.example.hackathon.SignUp.adapter.CharacterAdapter
+import com.example.hackathon.ui.signUp.adapter.CharacterAdapter
 import com.example.hackathon.databinding.FragmentSignup1Binding
 import com.example.hackathon.domain.model.AppCharacter
 

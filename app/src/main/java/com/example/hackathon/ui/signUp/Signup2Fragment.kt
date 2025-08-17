@@ -1,4 +1,4 @@
-package com.example.hackathon.SignUp
+package com.example.hackathon.ui.signUp
 
 import android.app.AlertDialog
 import android.os.Bundle
@@ -11,8 +11,6 @@ import com.example.hackathon.BaseFragment
 import com.example.hackathon.databinding.FragmentSignup2Binding
 import java.util.Calendar
 import kotlin.getValue
-import kotlin.math.max
-import kotlin.math.min
 
 class Signup2Fragment
     : BaseFragment<FragmentSignup2Binding>(FragmentSignup2Binding::inflate) {

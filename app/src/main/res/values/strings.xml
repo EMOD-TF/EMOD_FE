@@ -1,10 +1,10 @@
 <resources>
     <string name="app_name">Hackathon</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="summarize1">오늘 길동이는 어린이집에 다녀왔구나!</string>
     <string name="summarize2">어린이집에서 블럭놀이를 하면서 길동이가 좋아하는 버스랑 자동차를 만들었어. 정말 멋있었겠다!</string>
     <string name="summarize3">하지만, 열심히 만든 버스랑 자동차 블럭을 지나가던 친구가 실수로 넘어뜨렸지?</string>
+    <string name="emotion">길동이는 오늘 그런 일이 있어서 슬펐겠구나.그럼 이제 슬플 땐 어떻게 표현해야하는지 알아볼까?</string>
     <string name="summarize4">길동이가 열심히 만든 버스랑 자동차가 망가져서, 길동이는 엄청 속상했을 거야.</string>
 
     <string name="onboarding_title_1">우리 아이 맞춤형 감정 학습</string>
@@ -33,15 +33,15 @@
     </string-array>
 
     <string-array name="signup_step_3_q1_answers">
-        <item>거의 표현하지 못해요.</item>
-        <item>짧은 단어나 문장으로 감정을 설명해요.</item>
-        <item>상황에 맞추어 감정을 자연스럽게 표현해요.</item>
+        <item>거의 표현하지 못해요</item>
+        <item>짧은 단어나 문장으로 감정을 설명해요</item>
+        <item>상황에 맞추어 감정을 자연스럽게 표현해요</item>
     </string-array>
 
     <string-array name="signup_step_3_q2_answers">
-        <item>3분 이내에 자주 산만해져요.</item>
-        <item>5분 정도는 비교적 집중해요.</item>
-        <item>10분 이상 대화 흐름을 끝까지 따라요.</item>
+        <item>3분 이내에 자주 산만해져요</item>
+        <item>5분 정도는 비교적 집중해요</item>
+        <item>10분 이상 대화 흐름을 끝까지 따라요</item>
     </string-array>
 
     <string name="kindergarten">유치원 / 어린이집</string>

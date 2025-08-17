@@ -17,4 +17,11 @@ interface ApiService {
 
     @POST("api/v1/auth/signup")
     suspend fun signup(@Body req: AuthSignupRequest): Response<AuthSignupResponse>
+    
+    @POST("convo/proceed")
+    fun proceed(@Body request: ProceedRequest): Call<ProceedResponse>
+
+    @POST("summary/today")
+    fun summary(@Body request: SummaryRequest): Call<SummaryResponse>
 }
+

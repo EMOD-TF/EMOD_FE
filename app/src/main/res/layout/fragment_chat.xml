@@ -15,7 +15,6 @@
         android:src="@drawable/lion_character_4x"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
     
     <LinearLayout
         android:layout_width="319dp"
@@ -50,12 +49,19 @@
 
     </LinearLayout>
 
-    <ImageView
-        android:id="@+id/img_chat"
+
+    <TextView
+        android:id="@+id/tv_chat_ing"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/img_chat"
+        android:text="안녕, 정후야!\n오늘 어린이집 잘 다녀왔어?"
+        android:textSize="27sp"
+        style="@style/bold"
+        android:lineSpacingMultiplier="1.3"
+        android:background="@drawable/bg_chat_ing"
         android:layout_marginTop="90dp"
+        android:paddingVertical="24dp"
+        android:paddingHorizontal="27dp"
         android:layout_marginStart="32dp"
         app:layout_constraintStart_toEndOf="@id/img_character"
         app:layout_constraintTop_toTopOf="parent"/>
@@ -66,7 +72,7 @@
         android:layout_marginTop="45dp"
         android:layout_marginEnd="111dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/img_chat">
+        app:layout_constraintTop_toBottomOf="@id/tv_chat_ing">
 
         <androidx.camera.view.PreviewView
             android:id="@+id/img_kid_face"

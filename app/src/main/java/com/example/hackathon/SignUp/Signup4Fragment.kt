@@ -18,12 +18,25 @@ class Signup4Fragment
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // 클릭 리스너 등록
+        // ✅ 초기 선택 복원
+        clearAll()
+        vm.learningPlace?.let {
+            selected = it
+            when (it) {
+                SignupViewModel.Env.KINDERGARTEN -> binding.boxKindergarten.isSelected = true
+                SignupViewModel.Env.SCHOOL       -> binding.boxSchool.isSelected = true
+                SignupViewModel.Env.BUILDING     -> binding.boxBuilding.isSelected = true
+                SignupViewModel.Env.HOME         -> binding.boxHome.isSelected = true
+            }
+        }
+
+        // 클릭 리스너
         binding.boxKindergarten.setOnClickListener { onBoxClicked(SignupViewModel.Env.KINDERGARTEN, it) }
         binding.boxSchool.setOnClickListener       { onBoxClicked(SignupViewModel.Env.SCHOOL, it) }
         binding.boxBuilding.setOnClickListener     { onBoxClicked(SignupViewModel.Env.BUILDING, it) }
         binding.boxHome.setOnClickListener         { onBoxClicked(SignupViewModel.Env.HOME, it) }
     }
+
 
     private fun onBoxClicked(env: SignupViewModel.Env, view: View) {
         if (selected == env) return

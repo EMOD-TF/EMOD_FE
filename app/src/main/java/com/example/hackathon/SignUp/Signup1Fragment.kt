@@ -37,22 +37,21 @@ class Signup1Fragment
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // RecyclerView
         binding.rvCharacters.apply {
-            layoutManager = LinearLayoutManager(
-                requireContext(), RecyclerView.HORIZONTAL, false
-            )
+            layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
             adapter = this@Signup1Fragment.adapter
             setHasFixedSize(true)
             itemAnimator = DefaultItemAnimator()
             addItemDecoration(SpacingDecoration(horizontal = dp(32)))
-            LinearSnapHelper().attachToRecyclerView(this) // 중앙 스냅(선택)
+            LinearSnapHelper().attachToRecyclerView(this)
         }
 
-        // 초기 선택(기본: PARROT)
-        selectedIndex = 0
+        // ✅ 초기 선택 복원
+        val initialIndex = vm.character?.let { data.indexOf(it) }?.takeIf { it >= 0 } ?: 0
+        selectedIndex = initialIndex
+        (binding.rvCharacters.layoutManager as? LinearLayoutManager)
+            ?.scrollToPosition(initialIndex)
 
-        // 좌/우 버튼
         binding.chBtnLeft.setOnClickListener { selectedIndex -= 1 }
         binding.chBtnRight.setOnClickListener { selectedIndex += 1 }
     }

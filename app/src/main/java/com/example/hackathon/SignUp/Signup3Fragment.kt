@@ -12,26 +12,28 @@ class Signup3Fragment
     : BaseFragment<FragmentSignup3Binding>(FragmentSignup3Binding::inflate) {
 
     private val vm: SignupViewModel by activityViewModels()
-    private val questions by lazy {
-        resources.getStringArray(R.array.signup_step_3_questions)
-    }
+    private val questions by lazy { resources.getStringArray(R.array.signup_step_3_questions) }
 
-    // 각 질문에 대응하는 답변 배열 리소스 ID
     private val answerArrays = intArrayOf(
         R.array.signup_step_3_q1_answers,
         R.array.signup_step_3_q2_answers
     )
 
-    // 현재 질문 인덱스
     private var qIndex = 0
-
-    // 질문별 선택 인덱스 저장 (0..2)
     private val selections = mutableMapOf<Int, Int>()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // 보기 줄 전체 클릭으로도 선택되게
+        // ✅ VM → selections 프리로드
+        preloadSelectionsFromVM()
+        qIndex = when {
+            vm.q1.isNullOrBlank() -> 0
+            vm.q2.isNullOrBlank() -> 1
+            else -> 0 // 전부 응답했어도 0번째로 보여주기 (원하면 1로 바꿔도 됨)
+        }
+
+        // 보기 탭/라디오 리스너 (기존 그대로)
         binding.rowAnswer1.setOnClickListener { select(0) }
         binding.rowAnswer2.setOnClickListener { select(1) }
         binding.rowAnswer3.setOnClickListener { select(2) }
@@ -39,7 +41,6 @@ class Signup3Fragment
         binding.radioAnswer2.setOnClickListener { select(1) }
         binding.radioAnswer3.setOnClickListener { select(2) }
 
-        // 좌/우 버튼
         binding.step3BtnLeft.setOnClickListener {
             if (qIndex > 0) {
                 saveCurrentSelection()
@@ -52,22 +53,27 @@ class Signup3Fragment
             if (qIndex < questions.lastIndex) {
                 qIndex++
                 render()
-            } else {
-                // 마지막 질문이면 완료 처리 (원하는 동작으로 교체)
-                Toast.makeText(requireContext(), "체크리스트 완료!", Toast.LENGTH_SHORT).show()
-                // TODO: selections 를 다음 화면/뷰모델로 전달
             }
         }
 
-        render() // 첫 화면 그리기
+        render()
     }
 
-    /** 화면 갱신: 질문/보기 텍스트, 선택상태, 좌우 버튼 상태 */
-    private fun render() {
-        // 질문
-        binding.step3Question.text = questions[qIndex]
+    private fun preloadSelectionsFromVM() {
+        indexOfAnswer(answerArrays[0], vm.q1)?.let { selections[0] = it }
+        indexOfAnswer(answerArrays[1], vm.q2)?.let { selections[1] = it }
+    }
 
-        // 보기 텍스트
+    private fun indexOfAnswer(@androidx.annotation.ArrayRes resId: Int, value: String?): Int? {
+        if (value.isNullOrEmpty()) return null
+        val arr = resources.getStringArray(resId)
+        val idx = arr.indexOf(value)
+        return if (idx >= 0) idx else null
+    }
+
+    private fun render() {
+        // 질문/보기
+        binding.step3Question.text = questions[qIndex]
         val answers = resources.getStringArray(answerArrays[qIndex])
         binding.tvAnswer1.text = answers.getOrNull(0) ?: ""
         binding.tvAnswer2.text = answers.getOrNull(1) ?: ""
@@ -77,33 +83,31 @@ class Signup3Fragment
         val sel = selections[qIndex] ?: -1
         setChecked(sel)
 
-        // 좌/우 버튼 상태
-        binding.step3BtnLeft.isEnabled = qIndex > 0
-        binding.step3BtnLeft.alpha = if (qIndex > 0) 1f else 0.3f
+        // 화살표/완료 버튼 가시성
+        val isFirst = qIndex == 0
+        val isLast  = qIndex == questions.lastIndex
 
-        // 마지막 질문이면 오른쪽 버튼에 완료 의미를 주고 싶다면 alpha/콘텐츠설명만
-        binding.step3BtnRight.contentDescription =
-            if (qIndex == questions.lastIndex) "완료" else "다음"
+        // 첫 문항에서는 왼쪽 화살표를 '보이지 않게' (자리 유지 위해 INVISIBLE)
+        binding.step3BtnLeft.visibility = if (isFirst) View.INVISIBLE else View.VISIBLE
+
+        // 마지막 문항에서는 오른쪽 화살표 숨김
+        binding.step3BtnRight.visibility = if (isLast) View.GONE else View.VISIBLE
     }
 
-    /** 특정 보기 선택 */
     private fun select(answerIndex: Int) {
         selections[qIndex] = answerIndex
         setChecked(answerIndex)
-        // 즉시 ViewModel에도 반영(UX상 안정적)
         val answers = resources.getStringArray(answerArrays[qIndex])
         val picked = answers.getOrNull(answerIndex) ?: return
         if (qIndex == 0) vm.q1 = picked else if (qIndex == 1) vm.q2 = picked
     }
 
-    /** 라디오 체크 상태 일괄 반영 */
     private fun setChecked(which: Int) {
         binding.radioAnswer1.isChecked = (which == 0)
         binding.radioAnswer2.isChecked = (which == 1)
         binding.radioAnswer3.isChecked = (which == 2)
     }
 
-    /** 현재 질문의 선택 저장(미선택 시 안내) */
     private fun saveCurrentSelection(): Boolean {
         val chosen = when {
             binding.radioAnswer1.isChecked -> 0

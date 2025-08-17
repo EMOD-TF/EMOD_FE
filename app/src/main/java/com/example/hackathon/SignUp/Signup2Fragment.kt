@@ -38,22 +38,46 @@ class Signup2Fragment
             vm.name = it?.toString()?.trim().orEmpty()
         }
 
-        // 초기 생년월 표시
-        updateBirthLabel()
-        vm.birthYear = selectedYear
-        vm.birthMonth = selectedMonth
+        // ✅ 초기값 복원
+        binding.etName.setText(vm.name.orEmpty())
 
-        // 생년월 선택 (컨테이너/텍스트 둘 다 클릭 가능)
+        vm.birthYear?.let { selectedYear = it }
+        vm.birthMonth?.let { selectedMonth = it }
+        updateBirthLabel()
+
+        when (vm.gender) {
+            SignupViewModel.Gender.MALE -> {
+                binding.rbMan.isChecked = true
+                selectedGender = Gender.MAN
+            }
+            SignupViewModel.Gender.FEMALE -> {
+                binding.rbWoman.isChecked = true
+                selectedGender = Gender.WOMAN
+            }
+            null -> {
+                // ✅ 성별을 안 건드려도 통과되도록 기본값(남) 주입 + UI 체크
+                vm.gender = SignupViewModel.Gender.MALE
+                binding.rbMan.isChecked = true
+                selectedGender = Gender.MAN
+            }
+        }
+
+        // ✅ 생년/월도 안 건드려도 통과되도록 기본값 주입
+        if (vm.birthYear == null) vm.birthYear = selectedYear
+        if (vm.birthMonth == null) vm.birthMonth = selectedMonth
+
+        // 리스너
         binding.birthContainer.setOnClickListener { showYearMonthPicker() }
         binding.tvBirthValue.setOnClickListener { showYearMonthPicker() }
 
-        // 성별
         binding.rgGender.setOnCheckedChangeListener { _, _ ->
             selectedGender = if (binding.rbMan.isChecked) Gender.MAN else Gender.WOMAN
             vm.gender = if (binding.rbMan.isChecked)
                 SignupViewModel.Gender.MALE else SignupViewModel.Gender.FEMALE
         }
     }
+
+
 
     private fun updateBirthLabel() {
         binding.tvBirthValue.text = "${selectedYear}년 ${selectedMonth}월"
@@ -113,6 +137,13 @@ class Signup2Fragment
             Toast.makeText(requireContext(), "이름을 입력해 주세요.", Toast.LENGTH_SHORT).show()
             return null
         }
+
+        // ✅ 최종 결정값을 VM에 다시 싱크 (혹시 모를 누락 방지)
+        vm.birthYear = selectedYear
+        vm.birthMonth = selectedMonth
+        vm.gender = if (selectedGender == Gender.MAN)
+            SignupViewModel.Gender.MALE else SignupViewModel.Gender.FEMALE
+
         return ChildInfo(
             name = name,
             year = selectedYear,

@@ -128,8 +128,7 @@
                     android:layout_width="23.33dp"
                     android:layout_height="23.33dp"
                     android:background="@drawable/radio"
-                    android:button="@null"
-                    android:checked="true"/>
+                    android:button="@null" />
 
                 <Space
                     android:layout_width="14.67dp"

@@ -1,4 +1,4 @@
-package com.example.hackathon.adapter
+package com.example.hackathon.SignUp.adapter
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import android.widget.ImageButton
 import androidx.recyclerview.widget.RecyclerView
 import com.example.hackathon.R
-import com.example.hackathon.model.AppCharacter
+import com.example.hackathon.domain.model.AppCharacter
 
 class CharacterAdapter(
     private val items: List<AppCharacter>,

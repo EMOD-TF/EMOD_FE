@@ -2,7 +2,7 @@ package com.example.hackathon.SignUp
 
 import androidx.lifecycle.ViewModel
 import org.json.JSONObject
-import com.example.hackathon.model.AppCharacter
+import com.example.hackathon.domain.model.AppCharacter
 
 class SignupViewModel : ViewModel() {
 

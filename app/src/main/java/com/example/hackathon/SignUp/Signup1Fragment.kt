@@ -9,9 +9,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearSnapHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.example.hackathon.BaseFragment
-import com.example.hackathon.adapter.CharacterAdapter
+import com.example.hackathon.SignUp.adapter.CharacterAdapter
 import com.example.hackathon.databinding.FragmentSignup1Binding
-import com.example.hackathon.model.AppCharacter
+import com.example.hackathon.domain.model.AppCharacter
 
 class Signup1Fragment
     : BaseFragment<FragmentSignup1Binding>(FragmentSignup1Binding::inflate) {

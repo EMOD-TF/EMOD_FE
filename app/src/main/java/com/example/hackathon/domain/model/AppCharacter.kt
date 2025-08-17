@@ -1,4 +1,4 @@
-package com.example.hackathon.model
+package com.example.hackathon.domain.model
 
 import com.example.hackathon.R
 

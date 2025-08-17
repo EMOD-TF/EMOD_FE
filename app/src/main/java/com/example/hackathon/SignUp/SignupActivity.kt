@@ -3,6 +3,7 @@ package com.example.hackathon.SignUp
 import androidx.fragment.app.Fragment
 import android.os.Bundle
 import android.util.TypedValue
+import android.view.View
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.TextView
@@ -39,7 +40,7 @@ class SignupActivity: AppCompatActivity() {
 
         // 3. 버튼 클릭 시 단계 변경 및 UI 업데이트
         binding.btnRight.setOnClickListener {
-            if (currentStep < 4) {
+            if (currentStep < 5) {
                 currentStep++
                 updateUIForCurrentStep()
             }
@@ -67,6 +68,9 @@ class SignupActivity: AppCompatActivity() {
      * 현재 단계(currentStep)에 맞게 모든 UI를 업데이트하는 통합 함수
      */
     private fun updateUIForCurrentStep() {
+        // 상단 스텝 텍스트와 인디케이터를 보이게 설정
+        binding.stepText.visibility = View.VISIBLE
+        binding.stepIndicator.visibility = View.VISIBLE
         // 배열 범위를 벗어나지 않도록 안전 체크
         if (currentStep in 1..stepTexts.size) {
             // 메인 텍스트 변경
@@ -82,6 +86,13 @@ class SignupActivity: AppCompatActivity() {
                 3 -> setFragment(Signup3Fragment())
                 4 -> setFragment(Signup4Fragment())
             }
+        } else if (currentStep == 5) {
+            // 안보이게
+            binding.stepText.visibility = View.GONE
+            binding.stepIndicator.visibility = View.GONE
+
+            // 프래그먼트 교체
+            setFragment(Signup5Fragment())
         }
     }
 

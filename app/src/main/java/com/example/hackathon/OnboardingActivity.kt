@@ -18,7 +18,7 @@ class OnboardingActivity : AppCompatActivity() {
         // 화면을 클릭하거나 5초 후에 로그인 화면으로 이동
         binding.root.postDelayed({
             moveToLogin()
-        }, 5000)
+        }, 3000)
     }
 
     fun moveToLogin() {

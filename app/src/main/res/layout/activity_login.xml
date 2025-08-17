@@ -160,6 +160,7 @@
     </LinearLayout>
 
     <Button
+        android:id="@+id/button"
         android:layout_width="266.67dp"
         android:layout_height="93.33dp"
         android:layout_marginTop="76dp"

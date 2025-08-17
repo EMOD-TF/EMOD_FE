@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="@layout/activity_signup">
+
+    <LinearLayout
+        android:id="@+id/rootContainer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <!-- 이름 -->
+        <LinearLayout
+            android:layout_width="574.93dp"
+            android:layout_height="80dp"
+            android:background="@drawable/bg_input"
+            android:padding="24.67dp"
+            android:gravity="center_vertical">
+
+            <TextView
+                style="@style/bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="이름"
+                android:textColor="#7F7F7F"
+                android:textSize="26.67sp" />
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <EditText
+                android:id="@+id/etName"
+                style="@style/bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="이름 입력"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:inputType="textPersonName"
+                android:textColor="@color/black"
+                android:textSize="26.67sp"
+                android:background="@android:color/transparent"/>
+        </LinearLayout>
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="26.67dp" />
+
+        <!-- 생년 & 월 -->
+        <LinearLayout
+            android:id="@+id/birthContainer"
+            android:layout_width="574.93dp"
+            android:layout_height="80dp"
+            android:background="@drawable/bg_input"
+            android:padding="24.67dp"
+            android:gravity="center_vertical">
+
+            <TextView
+                style="@style/bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="생년 &amp; 월"
+                android:textColor="#7F7F7F"
+                android:textSize="26.67sp" />
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <!-- 값 표시 (탭하면 다이얼로그) -->
+            <TextView
+                android:id="@+id/tvBirthValue"
+                style="@style/bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2020년 1월"
+                android:textColor="@color/black"
+                android:textSize="26.67sp"
+                android:clickable="true"
+                android:focusable="true" />
+        </LinearLayout>
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="26.67dp" />
+
+        <!-- 성별 -->
+        <LinearLayout
+            android:layout_width="574.93dp"
+            android:layout_height="80dp"
+            android:background="@drawable/bg_input"
+            android:padding="24.67dp"
+            android:gravity="center_vertical">
+
+            <TextView
+                style="@style/bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="성별"
+                android:textColor="#7F7F7F"
+                android:textSize="26.67sp" />
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <RadioGroup
+                android:id="@+id/rgGender"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <RadioButton
+                    android:id="@+id/rbMan"
+                    android:layout_width="23.33dp"
+                    android:layout_height="23.33dp"
+                    android:background="@drawable/radio"
+                    android:button="@null" />
+
+                <Space
+                    android:layout_width="14.67dp"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    style="@style/bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="남자"
+                    android:textColor="@color/black"
+                    android:textSize="26.67sp" />
+
+                <Space
+                    android:layout_width="73.33dp"
+                    android:layout_height="wrap_content"/>
+
+                <RadioButton
+                    android:id="@+id/rbWoman"
+                    android:layout_width="23.33dp"
+                    android:layout_height="23.33dp"
+                    android:background="@drawable/radio"
+                    android:button="@null"/>
+
+                <Space
+                    android:layout_width="14.67dp"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    style="@style/bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="여자"
+                    android:textColor="@color/black"
+                    android:textSize="26.67sp" />
+            </RadioGroup>
+        </LinearLayout>
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

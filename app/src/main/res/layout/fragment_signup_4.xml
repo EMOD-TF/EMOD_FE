@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:showIn="@layout/activity_signup">
+
+    <LinearLayout
+        android:id="@+id/rowContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="12dp"
+        android:layout_marginTop="70dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <!-- 유치원 -->
+        <LinearLayout
+            android:id="@+id/boxKindergarten"
+            android:layout_width="192.67dp"
+            android:layout_height="242dp"
+            android:background="@drawable/bg_square_selector"
+            android:clickable="true"
+            android:contentDescription="@string/kindergarten"
+            android:focusable="true"
+            android:foreground="?attr/selectableItemBackground"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_kindergarten" />
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="11dp" />
+
+            <TextView
+                style="@style/extrabold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/kindergarten"
+                android:textColor="@color/black" />
+        </LinearLayout>
+
+        <Space
+            android:layout_width="34dp"
+            android:layout_height="0dp" />
+
+        <!-- 학교 -->
+        <LinearLayout
+            android:id="@+id/boxSchool"
+            android:layout_width="192.67dp"
+            android:layout_height="242dp"
+            android:background="@drawable/bg_square_selector"
+            android:clickable="true"
+            android:contentDescription="@string/school"
+            android:focusable="true"
+            android:foreground="?attr/selectableItemBackground"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_school" />
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="13dp" />
+
+            <TextView
+                style="@style/extrabold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/school"
+                android:textColor="@color/black" />
+        </LinearLayout>
+
+        <Space
+            android:layout_width="34dp"
+            android:layout_height="0dp" />
+
+        <!-- 건물 -->
+        <LinearLayout
+            android:id="@+id/boxBuilding"
+            android:layout_width="192.67dp"
+            android:layout_height="242dp"
+            android:background="@drawable/bg_square_selector"
+            android:clickable="true"
+            android:contentDescription="@string/building"
+            android:focusable="true"
+            android:foreground="?attr/selectableItemBackground"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_building" />
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="0dp" />
+
+            <TextView
+                style="@style/extrabold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/building"
+                android:textColor="@color/black" />
+        </LinearLayout>
+
+        <Space
+            android:layout_width="34dp"
+            android:layout_height="0dp" />
+
+        <!-- 집 -->
+        <LinearLayout
+            android:id="@+id/boxHome"
+            android:layout_width="192.67dp"
+            android:layout_height="242dp"
+            android:background="@drawable/bg_square_selector"
+            android:clickable="true"
+            android:contentDescription="@string/home"
+            android:focusable="true"
+            android:foreground="?attr/selectableItemBackground"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_home" />
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="0dp" />
+
+            <TextView
+                style="@style/extrabold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/home"
+                android:textColor="@color/black" />
+        </LinearLayout>
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

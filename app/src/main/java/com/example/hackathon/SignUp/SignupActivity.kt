@@ -12,6 +12,9 @@ import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.constraintlayout.widget.ConstraintSet
+import androidx.core.view.isVisible
 import androidx.fragment.app.commit
 import com.example.hackathon.R
 import com.example.hackathon.databinding.ActivitySignupBinding
@@ -76,6 +79,15 @@ class SignupActivity: AppCompatActivity() {
      * 현재 단계(currentStep)에 맞게 모든 UI를 업데이트하는 통합 함수
      */
     private fun updateUIForCurrentStep() {
+        if (currentStep == 5) {
+            binding.stepText.visibility = View.GONE
+            binding.stepIndicator.visibility = View.GONE
+            setFragmentFullWidth(full = true)
+        } else {
+            binding.stepText.visibility = View.VISIBLE
+            binding.stepIndicator.visibility = View.VISIBLE
+            setFragmentFullWidth(full = false)
+        }
         // 배열 범위를 벗어나지 않도록 안전 체크
         if (currentStep in 1..stepTexts.size) {
             // 메인 텍스트 변경
@@ -91,15 +103,9 @@ class SignupActivity: AppCompatActivity() {
                 3 -> setFragment(Signup3Fragment())
                 4 -> setFragment(Signup4Fragment())
             }
-            // 상단 스텝 텍스트와 인디케이터를 보이게 설정
-            binding.stepText.visibility = View.VISIBLE
-            binding.stepIndicator.visibility = View.VISIBLE
         } else if (currentStep == 5) {
             // 프래그먼트 교체
             setFragment(Signup5Fragment())
-            // 안보이게
-            binding.stepText.visibility = View.GONE
-            binding.stepIndicator.visibility = View.GONE
         }
     }
 
@@ -121,5 +127,37 @@ class SignupActivity: AppCompatActivity() {
                 textView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20.48f)
             }
         }
+    }
+
+    private fun setFragmentFullWidth(full: Boolean) {
+        val root = binding.root as ConstraintLayout
+        val set = ConstraintSet().apply { clone(root) }
+
+        // 우선 기존 좌우 제약 해제
+        set.clear(R.id.ft_signup, ConstraintSet.START)
+        set.clear(R.id.ft_signup, ConstraintSet.END)
+
+        if (full) {
+            // 좌우를 부모에 직접 연결
+            set.connect(
+                R.id.ft_signup, ConstraintSet.START,
+                ConstraintSet.PARENT_ID, ConstraintSet.START
+            )
+            set.connect(
+                R.id.ft_signup, ConstraintSet.END,
+                ConstraintSet.PARENT_ID, ConstraintSet.END
+            )
+        } else {
+            // 좌우 버튼 사이로 제한
+            set.connect(
+                R.id.ft_signup, ConstraintSet.START,
+                R.id.btn_left, ConstraintSet.END
+            )
+            set.connect(
+                R.id.ft_signup, ConstraintSet.END,
+                R.id.btn_right, ConstraintSet.START
+            )
+        }
+        set.applyTo(root)
     }
 }

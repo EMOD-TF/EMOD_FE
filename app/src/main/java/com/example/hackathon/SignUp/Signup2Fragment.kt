@@ -1,19 +1,111 @@
 package com.example.hackathon.SignUp
 
+import android.app.AlertDialog
 import android.os.Bundle
 import android.view.View
+import android.widget.NumberPicker
+import android.widget.Toast
 import com.example.hackathon.BaseFragment
 import com.example.hackathon.databinding.FragmentSignup2Binding
+import java.util.Calendar
+import kotlin.math.max
+import kotlin.math.min
 
-class Signup2Fragment: BaseFragment<FragmentSignup2Binding>(FragmentSignup2Binding::inflate) {
+class Signup2Fragment
+    : BaseFragment<FragmentSignup2Binding>(FragmentSignup2Binding::inflate) {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
+    data class ChildInfo(
+        val name: String,
+        val year: Int,
+        val month: Int, // 1..12
+        val gender: Gender
+    )
+    enum class Gender { MAN, WOMAN }
+
+    private var selectedYear: Int = Calendar.getInstance().get(Calendar.YEAR)
+    private var selectedMonth: Int = Calendar.getInstance().get(Calendar.MONTH) + 1 // 1..12
+    private var selectedGender: Gender = Gender.MAN
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // 초기 생년월 표시
+        updateBirthLabel()
+
+        // 생년월 선택 (컨테이너/텍스트 둘 다 클릭 가능)
+        binding.birthContainer.setOnClickListener { showYearMonthPicker() }
+        binding.tvBirthValue.setOnClickListener { showYearMonthPicker() }
+
+        // 성별
+        binding.rgGender.setOnCheckedChangeListener { _, _ ->
+            selectedGender = if (binding.rbMan.isChecked) Gender.MAN else Gender.WOMAN
+        }
     }
 
+    private fun updateBirthLabel() {
+        binding.tvBirthValue.text = "${selectedYear}년 ${selectedMonth}월"
+    }
+
+    /** 연/월 선택 다이얼로그 */
+    private fun showYearMonthPicker() {
+        val ctx = requireContext()
+
+        // ✅ inflate 사용하지 말고 직접 생성
+        val container = android.widget.FrameLayout(ctx).apply {
+            setPadding(dp(16), dp(8), dp(16), dp(8))
+        }
+
+        val yearPicker = NumberPicker(ctx).apply {
+            val now = Calendar.getInstance().get(Calendar.YEAR)
+            minValue = 2000   // 필요 시 조정
+            maxValue = now
+            value = selectedYear.coerceIn(minValue, maxValue)
+            descendantFocusability = NumberPicker.FOCUS_BLOCK_DESCENDANTS
+        }
+
+        val monthPicker = NumberPicker(ctx).apply {
+            minValue = 1
+            maxValue = 12
+            value = selectedMonth.coerceIn(minValue, maxValue)
+            descendantFocusability = NumberPicker.FOCUS_BLOCK_DESCENDANTS
+        }
+
+        // 가로 배치
+        val row = android.widget.LinearLayout(ctx).apply {
+            orientation = android.widget.LinearLayout.HORIZONTAL
+            addView(yearPicker, android.widget.LinearLayout.LayoutParams(0, dp(120), 1f))
+            addView(monthPicker, android.widget.LinearLayout.LayoutParams(0, dp(120), 1f))
+        }
+        container.addView(row)
+
+        AlertDialog.Builder(ctx)
+            .setTitle("생년월 선택")
+            .setView(container)
+            .setPositiveButton("확인") { d, _ ->
+                selectedYear = yearPicker.value
+                selectedMonth = monthPicker.value
+                updateBirthLabel()
+                d.dismiss()
+            }
+            .setNegativeButton("취소", null)
+            .show()
+    }
+
+    /** 외부에서 호출: 값 검증 후 DTO 반환 */
+    fun collectFormOrNull(): ChildInfo? {
+        val name = binding.etName.text?.toString()?.trim().orEmpty()
+        if (name.isEmpty()) {
+            Toast.makeText(requireContext(), "이름을 입력해 주세요.", Toast.LENGTH_SHORT).show()
+            return null
+        }
+        return ChildInfo(
+            name = name,
+            year = selectedYear,
+            month = selectedMonth,
+            gender = selectedGender
+        )
+    }
+
+    private fun dp(v: Int): Int =
+        (resources.displayMetrics.density * v).toInt()
 }

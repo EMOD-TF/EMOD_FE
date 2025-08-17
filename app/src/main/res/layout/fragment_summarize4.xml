@@ -32,6 +32,8 @@
             >
 
 
+
+
             <LinearLayout
                 android:id="@+id/ll_emotion"
                 android:layout_width="0dp"
@@ -41,133 +43,8 @@
                 android:gravity="center">
 
                 <FrameLayout
-                    android:layout_width="133dp"
-                    android:layout_height="214dp">
-
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="133dp"
-                        android:src="@drawable/ic_small_circle"
-                        android:layout_gravity="center"/>
-
-                    <androidx.appcompat.widget.AppCompatImageView
-                        android:id="@+id/ic_emotion"
-                        android:layout_width="94dp"
-                        android:layout_height="74dp"
-                        android:src="@drawable/ic_place"
-                        android:layout_gravity="center"/>
-
-                    <TextView
-                        android:id="@+id/tv_emotion"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="어린이집"
-                        android:gravity="center_horizontal"
-                        android:textSize="21sp"
-                        android:textColor="#7F7F7F"
-                        style="@style/extrabold"
-                        android:layout_marginTop="27dp"
-                        android:layout_gravity="center|bottom"/>
-
-                </FrameLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/ll_event"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_weight="1"
-                android:gravity="center">
-
-                <FrameLayout
-                    android:layout_width="133dp"
-                    android:layout_height="214dp">
-
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="133dp"
-                        android:src="@drawable/ic_small_circle"
-                        android:layout_gravity="center"/>
-
-                    <androidx.appcompat.widget.AppCompatImageView
-                        android:id="@+id/ic_event"
-                        android:layout_width="64dp"
-                        android:layout_height="92dp"
-                        android:src="@drawable/ic_event"
-                        android:layout_gravity="center"/>
-
-                    <TextView
-                        android:id="@+id/tv_event"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="블럭놀이"
-                        android:gravity="center_horizontal"
-                        android:textSize="21sp"
-                        android:textColor="#7F7F7F"
-                        style="@style/extrabold"
-                        android:layout_marginTop="27dp"
-                        android:layout_gravity="center|bottom"/>
-
-                </FrameLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/ll_title"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_weight="1"
-                android:gravity="center">
-
-                <FrameLayout
-                    android:layout_width="133dp"
-                    android:layout_height="214dp">
-
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="133dp"
-                        android:src="@drawable/ic_small_circle"
-                        android:layout_gravity="center"/>
-
-                    <androidx.appcompat.widget.AppCompatImageView
-                        android:id="@+id/ic_title"
-                        android:layout_width="75dp"
-                        android:layout_height="92dp"
-                        android:src="@drawable/ic_title"
-                        android:layout_gravity="center"
-                        />
-
-                    <TextView
-                        android:id="@+id/tv_title"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="친구"
-                        android:gravity="center_horizontal"
-                        android:textSize="21sp"
-                        android:textColor="#7F7F7F"
-                        style="@style/extrabold"
-                        android:layout_marginTop="27dp"
-                        android:layout_gravity="center|bottom"/>
-
-                </FrameLayout>
-
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:id="@+id/ll_place"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_weight="1"
-                android:gravity="center">
-
-                <FrameLayout
-                    android:layout_width="167dp"
-                    android:layout_height="231dp">
+                    android:layout_width="166dp"
+                    android:layout_height="230dp">
 
                     <ImageView
                         android:layout_width="match_parent"
@@ -175,17 +52,17 @@
                         android:src="@drawable/ic_big_circle"/>
 
                     <androidx.appcompat.widget.AppCompatImageView
-                        android:id="@+id/ic_place"
+                        android:id="@+id/ic_emotion"
                         android:layout_width="106dp"
                         android:layout_height="98dp"
                         android:src="@drawable/ic_emotion"
                         android:layout_gravity="center"/>
 
                     <TextView
-                        android:id="@+id/tv_plae"
+                        android:id="@+id/tv_emotion"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="속상함"
+                        android:text="슬픔"
                         android:gravity="center_horizontal"
                         android:textSize="26sp"
                         android:textColor="#0080FF"
@@ -201,8 +78,6 @@
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-
-
 
             <FrameLayout
                 android:layout_width="800dp"
@@ -248,7 +123,7 @@
                         android:id="@+id/tv_chat"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/summarize4"
+                        android:text="@string/emotion"
                         style="@style/extrabold"
                         android:textSize="27sp"
                         android:layout_gravity="center"
@@ -259,8 +134,6 @@
                         android:elevation="2dp"/>
 
                 </FrameLayout>
-
-
 
             </FrameLayout>
 

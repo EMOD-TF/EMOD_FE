@@ -20,272 +20,140 @@
             android:textSize="37sp"
             style="@style/extrabold"
             android:gravity="center_horizontal"
-            android:layout_marginTop="66dp"/>
+            android:layout_marginTop="86dp"/>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginHorizontal="180dp"
-            android:paddingVertical="45dp"
-            android:gravity="center_vertical"
-            >
+            android:layout_marginHorizontal="295.5dp"
+            android:paddingTop="100dp"
+            android:gravity="center_vertical">
 
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/keyword_place"
+                android:layout_width="200dp"
+                android:layout_height="150dp"
+                android:text="어린이집"
+                android:textSize="32sp"
+                style="@style/extrabold"
+                android:background="@drawable/keyword_non_highlight"
+                android:layout_weight="1"/>
 
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/keyword_event"
+                android:layout_width="200dp"
+                android:layout_height="150dp"
+                android:text="블럭놀이"
+                android:textSize="32sp"
+                style="@style/extrabold"
+                android:background="@drawable/keyword_non_highlight"
+                android:layout_marginHorizontal="45dp"
+                android:layout_weight="1"/>
 
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/keyword_topic"
+                android:layout_width="200dp"
+                android:layout_height="150dp"
+                android:text="친구"
+                android:textSize="32sp"
+                style="@style/extrabold"
+                android:background="@drawable/keyword_highlight"
+                android:layout_weight="1"/>
 
-
-            <LinearLayout
-                android:id="@+id/ll_event"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_weight="1"
-                android:gravity="center">
-
-                <FrameLayout
-                    android:layout_width="133dp"
-                    android:layout_height="214dp">
-
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="133dp"
-                        android:src="@drawable/ic_small_circle"
-                        android:layout_gravity="center"/>
-
-                    <androidx.appcompat.widget.AppCompatImageView
-                        android:id="@+id/ic_event"
-                        android:layout_width="94dp"
-                        android:layout_height="74dp"
-                        android:src="@drawable/ic_place"
-                        android:layout_gravity="center"/>
-
-                    <TextView
-                        android:id="@+id/tv_event"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="어린이집"
-                        android:gravity="center_horizontal"
-                        android:textSize="21sp"
-                        android:textColor="#7F7F7F"
-                        style="@style/extrabold"
-                        android:layout_marginTop="27dp"
-                        android:layout_gravity="center|bottom"/>
-
-                </FrameLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/ll_title"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_weight="1"
-                android:gravity="center">
-
-                <FrameLayout
-                    android:layout_width="133dp"
-                    android:layout_height="214dp">
-
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="133dp"
-                        android:src="@drawable/ic_small_circle"
-                        android:layout_gravity="center"/>
-
-                    <androidx.appcompat.widget.AppCompatImageView
-                        android:id="@+id/ic_title"
-                        android:layout_width="64dp"
-                        android:layout_height="92dp"
-                        android:src="@drawable/ic_event"
-                        android:layout_gravity="center"
-                        />
-
-                    <TextView
-                        android:id="@+id/tv_title"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="블럭놀이"
-                        android:gravity="center_horizontal"
-                        android:textSize="21sp"
-                        android:textColor="#7F7F7F"
-                        style="@style/extrabold"
-                        android:layout_marginTop="27dp"
-                        android:layout_gravity="center|bottom"/>
-
-                </FrameLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/ll_place"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_weight="1"
-                android:gravity="center">
-
-                <FrameLayout
-                    android:layout_width="167dp"
-                    android:layout_height="231dp">
-
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:src="@drawable/ic_big_circle"/>
-
-                    <androidx.appcompat.widget.AppCompatImageView
-                        android:id="@+id/ic_place"
-                        android:layout_width="75dp"
-                        android:layout_height="92dp"
-                        android:src="@drawable/ic_title"
-                        android:layout_gravity="center"/>
-
-                    <TextView
-                        android:id="@+id/tv_plae"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="친구"
-                        android:gravity="center_horizontal"
-                        android:textSize="26sp"
-                        android:textColor="#0080FF"
-                        style="@style/extrabold"
-                        android:layout_marginTop="27dp"
-                        android:layout_gravity="bottom"/>
-                </FrameLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/ll_emotion"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_weight="1"
-                android:gravity="center">
-
-                <FrameLayout
-                    android:layout_width="133dp"
-                    android:layout_height="214dp">
-
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="133dp"
-                        android:src="@drawable/ic_small_circle"
-                        android:layout_gravity="center"/>
-
-                    <androidx.appcompat.widget.AppCompatImageView
-                        android:id="@+id/ic_emotion"
-                        android:layout_width="86dp"
-                        android:layout_height="78dp"
-                        android:src="@drawable/ic_emotion"
-                        android:layout_gravity="center"/>
-
-                    <TextView
-                        android:id="@+id/tv_emotion"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="속상함"
-                        android:gravity="center_horizontal"
-                        android:textSize="21sp"
-                        android:textColor="#7F7F7F"
-                        style="@style/extrabold"
-                        android:layout_marginTop="27dp"
-                        android:layout_gravity="center|bottom"/>
-
-                </FrameLayout>
-
-            </LinearLayout>
 
         </LinearLayout>
 
+
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+
         <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_width="800dp"
+            android:layout_height="200dp"
+            android:elevation="1dp"
+            android:layout_marginBottom="76dp"
+            android:layout_gravity="center_horizontal|bottom">
 
+            <ImageButton
+                android:layout_width="719dp"
+                android:layout_height="166dp"
+                android:src="@drawable/bg_third_chat"
+                android:background="@drawable/box_shadow"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="39dp"
+                android:layout_gravity="end"
+                />
 
+            <ImageButton
+                android:layout_width="754dp"
+                android:layout_height="166dp"
+                android:src="@drawable/bg_second_chat"
+                android:background="@drawable/box_shadow"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="19dp"
+                android:layout_gravity="end"
+                />
 
             <FrameLayout
-                android:layout_width="800dp"
-                android:layout_height="200dp"
-                android:elevation="1dp"
-                android:layout_gravity="center_horizontal">
+                android:layout_width="700dp"
+                android:layout_height="166dp"
+                android:layout_gravity="end"
+                >
+
 
                 <ImageButton
-                    android:layout_width="719dp"
+                    android:id="@+id/btn_summarize_chat3"
+                    android:layout_width="match_parent"
                     android:layout_height="166dp"
-                    android:src="@drawable/bg_third_chat"
                     android:background="@drawable/box_shadow"
-                    android:layout_marginTop="32dp"
-                    android:layout_marginEnd="39dp"
-                    android:layout_gravity="end"
-                    />
+                    android:src="@drawable/bg_gray_chat" />
 
-                <ImageButton
-                    android:layout_width="754dp"
-                    android:layout_height="166dp"
-                    android:src="@drawable/bg_second_chat"
-                    android:background="@drawable/box_shadow"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginEnd="19dp"
-                    android:layout_gravity="end"
-                    />
-
-                <FrameLayout
-                    android:layout_width="700dp"
-                    android:layout_height="166dp"
-                    android:layout_gravity="end"
-                    >
-
-
-                    <ImageButton
-                        android:id="@+id/btn_summarize_chat3"
-                        android:layout_width="match_parent"
-                        android:layout_height="166dp"
-                        android:background="@drawable/box_shadow"
-                        android:src="@drawable/bg_gray_chat" />
-
-                    <TextView
-                        android:id="@+id/tv_chat"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/summarize3"
-                        style="@style/extrabold"
-                        android:textSize="27sp"
-                        android:layout_gravity="center"
-                        android:gravity="center"
-                        android:layout_marginStart="75dp"
-                        android:layout_marginEnd="80dp"
-                        android:lineSpacingMultiplier="1.5"
-                        android:elevation="2dp"/>
-
-                </FrameLayout>
-
-
+                <TextView
+                    android:id="@+id/tv_chat"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/summarize3"
+                    style="@style/extrabold"
+                    android:textSize="27sp"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:layout_marginStart="75dp"
+                    android:layout_marginEnd="80dp"
+                    android:lineSpacingMultiplier="1.5"
+                    android:elevation="2dp"/>
 
             </FrameLayout>
 
-            <androidx.appcompat.widget.AppCompatImageButton
-                android:id="@+id/btn_next3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_next"
-                android:layout_gravity="center"
-                android:elevation="4dp"
-                android:background="@android:color/transparent"
-                android:layout_marginTop="78dp"/>
 
-            <ImageView
-                android:id="@+id/bg_grass"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:src="@drawable/bg_grass"
-                android:layout_gravity="bottom"/>
 
         </FrameLayout>
 
-    </LinearLayout>
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/btn_next3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_next"
+            android:layout_gravity="center|bottom"
+            android:layout_marginBottom="30dp"
+            android:elevation="4dp"
+            android:background="@android:color/transparent"/>
+
+        <ImageView
+            android:id="@+id/bg_grass"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:src="@drawable/bg_grass" />
+
+
+    </FrameLayout>
 
     <ImageView
         android:id="@+id/character_summarize"

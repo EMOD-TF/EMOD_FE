@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import com.example.hackathon.HomeActivity
 import com.example.hackathon.LoginActivity
 import com.example.hackathon.MainActivity
 import com.example.hackathon.core.DeviceId
@@ -48,7 +49,7 @@ class OnboardingActivity : AppCompatActivity() {
                     .collect { (_, completed) ->
                         if (!navigated) {
                             navigated = true
-                            val next = if (completed) MainActivity::class.java else LoginActivity::class.java
+                            val next = if (completed) HomeActivity::class.java else LoginActivity::class.java
                             startActivity(Intent(this@OnboardingActivity, next).apply {
                                 flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                             })

@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import com.example.hackathon.BaseFragment
+import com.example.hackathon.HomeActivity
 import com.example.hackathon.MainActivity
 import com.example.hackathon.data.repository.ProfileRepository
 import com.example.hackathon.databinding.FragmentSignup5Binding
@@ -44,7 +45,7 @@ class Signup5Fragment
             result.onSuccess {
                 // ✅ 레포에서 profileCompleted = true 저장 완료했으니 바로 메인
                 startActivity(
-                    Intent(requireContext(), MainActivity::class.java).apply {
+                    Intent(requireContext(), HomeActivity::class.java).apply {
                         addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
                     }
                 )

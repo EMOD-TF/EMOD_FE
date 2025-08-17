@@ -17,6 +17,14 @@ class Summarize4Fragment : BaseFragment<FragmentSummarize4Binding>(FragmentSumma
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        // Expression Fragment로 이동
+        binding.btnNext4.setOnClickListener {
+            (activity as DiaryActivity).setFragment(ExpressionFragment())
+        }
+        binding.btnSummarizeChat4.setOnClickListener {
+            (activity as DiaryActivity).setFragment(ExpressionFragment())
+        }
     }
 
 }

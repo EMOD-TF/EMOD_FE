@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Diary.Summarize1Fragment"
+    tools:context=".Diary.summary.Summarize1Fragment"
     android:orientation="vertical">
 
 
@@ -44,7 +44,7 @@
 
                 <FrameLayout
                     android:layout_width="166dp"
-                    android:layout_height="230dp">
+                    android:layout_height="270dp">
 
                     <ImageView
                         android:layout_width="match_parent"
@@ -59,7 +59,7 @@
                         android:layout_gravity="center"/>
 
                     <TextView
-                        android:id="@+id/tv_emotion"
+                        android:id="@+id/keyword_emotion"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="슬픔"
@@ -67,7 +67,6 @@
                         android:textSize="26sp"
                         android:textColor="#0080FF"
                         style="@style/extrabold"
-                        android:layout_marginTop="27dp"
                         android:layout_gravity="bottom"/>
                 </FrameLayout>
 

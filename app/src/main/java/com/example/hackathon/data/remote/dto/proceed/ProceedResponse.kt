@@ -1,4 +1,4 @@
-package com.example.hackathon.data.remote.dto
+package com.example.hackathon.data.remote.dto.proceed
 
 data class ProceedResponse(
     val isAnswerValid: Boolean,

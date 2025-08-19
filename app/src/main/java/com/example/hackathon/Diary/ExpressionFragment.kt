@@ -1,11 +1,14 @@
 package com.example.hackathon.Diary
 
 import android.graphics.Color
+import android.graphics.Outline
 import android.os.Bundle
 import android.text.Spannable
 import android.text.SpannableString
 import android.text.style.ForegroundColorSpan
+import android.util.TypedValue
 import android.view.View
+import android.view.ViewOutlineProvider
 import androidx.annotation.OptIn
 import androidx.camera.core.CameraSelector
 import androidx.camera.core.Preview
@@ -40,8 +43,8 @@ class ExpressionFragment : BaseFragment<FragmentExpressionBinding>(FragmentExpre
         super.onViewCreated(view, savedInstanceState)
 
         // 감정 폰트 일부 색 바꾸기
-        val fullText = "기분이 속상할 땐,\n어떤 표정을 지을까?"
-        val targetText = "속상할 땐"
+        val targetText = targetEmotion
+        val fullText = "${targetText} 땐,"
         val spannable = SpannableString(fullText)
         val start = fullText.indexOf(targetText)
         val end = start + targetText.length
@@ -49,7 +52,7 @@ class ExpressionFragment : BaseFragment<FragmentExpressionBinding>(FragmentExpre
             ForegroundColorSpan(Color.parseColor("#0080FF")),
             start, end, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
         )
-        binding.tvMent.text = spannable
+        binding.tvEmotionWord.text = spannable
 
         // 초기 텍스트 세팅
         binding.tvExpression.text = "현재 인식할 감정: $targetEmotion"
@@ -61,6 +64,38 @@ class ExpressionFragment : BaseFragment<FragmentExpressionBinding>(FragmentExpre
             .build()
 
         faceDetector = FaceDetection.getClient(options)
+
+
+        // preview 띄우고 자르기
+        val previewView = binding.imgKidExpression
+
+        // previewView 띄우기
+        val cameraProviderFuture = ProcessCameraProvider.getInstance(requireContext())
+        cameraProviderFuture.addListener({
+            val cameraProvider = cameraProviderFuture.get()
+            val preview = Preview.Builder().build().also {
+                it.setSurfaceProvider(previewView.surfaceProvider)
+            }
+            val cameraSelector = CameraSelector.DEFAULT_FRONT_CAMERA
+
+            cameraProvider.unbindAll()
+            cameraProvider.bindToLifecycle(this, cameraSelector, preview)
+        }, ContextCompat.getMainExecutor(requireContext()))
+
+        // previewView 겉에 잘라내기
+        val radiusPx = TypedValue.applyDimension(
+            TypedValue.COMPLEX_UNIT_DIP,
+            55f,
+            resources.displayMetrics
+        )
+
+        previewView.outlineProvider = object : ViewOutlineProvider() {
+            override fun getOutline(view: View, outline: Outline) {
+                outline.setRoundRect(0, 0, view.width, view.height, radiusPx)
+            }
+        }
+        previewView.clipToOutline = true
+
 
         startCamera()
     }

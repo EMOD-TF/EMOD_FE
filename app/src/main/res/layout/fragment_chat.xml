@@ -54,7 +54,7 @@
         android:id="@+id/tv_chat_ing"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="안녕, 정후야!\n오늘 어린이집 잘 다녀왔어?"
+        android:text=""
         android:textSize="27sp"
         style="@style/bold"
         android:lineSpacingMultiplier="1.3"

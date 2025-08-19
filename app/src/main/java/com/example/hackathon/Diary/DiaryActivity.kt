@@ -7,6 +7,7 @@ import android.view.WindowInsets
 import android.widget.Button
 import androidx.activity.addCallback
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.viewModels
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -14,12 +15,16 @@ import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.core.view.WindowCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
+import com.example.hackathon.Diary.viewmodel.SummaryViewModel
 import com.example.hackathon.HomeActivity
 import com.example.hackathon.R
 import com.example.hackathon.databinding.ActivityDiaryBinding
 
 class DiaryActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDiaryBinding
+
+    // Activity Scope ViewModel
+    val summaryViewModel: SummaryViewModel by viewModels()
 
     @RequiresApi(Build.VERSION_CODES.R)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -74,14 +79,5 @@ class DiaryActivity : AppCompatActivity() {
 
         dialog.show()
     }
-
-//    override fun onBackPressed() {
-//        val fragmentManager = supportFragmentManager
-//        if (fragmentManager.backStackEntryCount > 0) {
-//            fragmentManager.popBackStack()
-//        } else {
-//            super.onBackPressed()
-//        }
-//    }
 
 }

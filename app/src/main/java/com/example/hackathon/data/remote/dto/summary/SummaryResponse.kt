@@ -1,4 +1,4 @@
-package com.example.hackathon.data.remote.dto
+package com.example.hackathon.data.remote.dto.summary
 
 data class SummaryResponse(
     val place: Detail,

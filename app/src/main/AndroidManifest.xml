@@ -42,7 +42,7 @@
         </activity>
         <activity android:name=".LoginActivity"
             android:exported="false" />
-        <activity android:name="com.example.hackathon.ui.signUp.SignupActivity"
+        <activity android:name="com.example.emod.ui.signUp.SignupActivity"
             android:exported="false" />
         <activity
             android:name=".Diary.DiaryActivity"

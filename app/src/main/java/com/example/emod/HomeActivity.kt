@@ -1,0 +1,26 @@
+package com.example.emod
+
+import android.content.Intent
+import android.os.Bundle
+import androidx.activity.enableEdgeToEdge
+import androidx.appcompat.app.AppCompatActivity
+import com.example.emod.Diary.DiaryActivity
+import com.example.emod.databinding.ActivityHomeBinding
+
+class HomeActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityHomeBinding
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding = ActivityHomeBinding.inflate(layoutInflater)
+
+        binding.btnWriteDiary.setOnClickListener {
+            val intent = Intent(this, DiaryActivity::class.java)
+            startActivity(intent)
+        }
+
+        enableEdgeToEdge()
+        setContentView(binding.root)
+    }
+
+}

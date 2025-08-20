@@ -15,15 +15,22 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"/>
-    
-    <ImageView
-        android:id="@+id/bg_finish_emo"
+
+    <TextView
+        android:id="@+id/tv_finish_dairy"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/bg_finish_emo"
+        android:background="@drawable/bg_chat_ing"
+        android:text="정말 잘했어!"
+        android:textSize="27sp"
+        style="@style/extrabold"
+        android:paddingHorizontal="27dp"
+        android:paddingVertical="24dp"
         android:layout_marginStart="30dp"
         android:layout_marginTop="150dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toEndOf="@id/img_character"/>
+        app:layout_constraintStart_toEndOf="@id/img_character"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

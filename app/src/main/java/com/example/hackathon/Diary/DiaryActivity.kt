@@ -5,6 +5,7 @@ import android.os.Build
 import android.os.Bundle
 import android.view.WindowInsets
 import android.widget.Button
+import android.widget.ImageButton
 import androidx.activity.addCallback
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
@@ -74,6 +75,10 @@ class DiaryActivity : AppCompatActivity() {
 
         dialogView.findViewById<Button>(R.id.btn_no).setOnClickListener {
             // 그냥 닫기
+            dialog.dismiss()
+        }
+
+        dialogView.findViewById<ImageButton>(R.id.ic_close).setOnClickListener {
             dialog.dismiss()
         }
 

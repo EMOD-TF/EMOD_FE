@@ -1,10 +1,14 @@
 package com.example.hackathon.ui.signUp
 
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.asLiveData
+import androidx.lifecycle.viewModelScope
+import com.example.hackathon.data.repository.ProfileRepository
 import org.json.JSONObject
 import com.example.hackathon.domain.model.AppCharacter
+import kotlinx.coroutines.launch
 
-class SignupViewModel : ViewModel() {
+class SignupViewModel() : ViewModel() {
 
     enum class Gender { MALE, FEMALE }
     enum class Env { KINDERGARTEN, SCHOOL, BUILDING, HOME }
@@ -21,6 +25,7 @@ class SignupViewModel : ViewModel() {
     var q2: String? = null
 
     var learningPlace: Env? = null
+
 
     // --- 단계별 유효성 ---
     fun isStepValid(step: Int): Boolean = when (step) {

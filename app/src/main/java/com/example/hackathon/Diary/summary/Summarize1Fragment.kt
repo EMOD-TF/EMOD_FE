@@ -1,16 +1,23 @@
 package com.example.hackathon.Diary.summary
 
+import android.content.Context
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import com.example.hackathon.BaseFragment
 import com.example.hackathon.Diary.DiaryActivity
 import com.example.hackathon.Diary.viewmodel.SummaryViewModel
+import com.example.hackathon.data.repository.ProfileRepository
 import com.example.hackathon.databinding.FragmentSummarizeBinding
+import com.example.hackathon.ui.signUp.SignupViewModel
 
 class Summarize1Fragment : BaseFragment<FragmentSummarizeBinding>(FragmentSummarizeBinding::inflate) {
 
     private val viewModel: SummaryViewModel by activityViewModels()
+//    private val profileViewModel: SignupViewModel by viewModels {
+//        SignupViewModelFactory(ProfileRepository(requireContext()))
+//    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,27 +34,17 @@ class Summarize1Fragment : BaseFragment<FragmentSummarizeBinding>(FragmentSummar
             binding.tvChat.text = summary.place.sentence
         }
 
-        // 전달받은 데이터 꺼내기
-//        val place = arguments?.getString("keyword_place") ?: ""
-//        val event = arguments?.getString("keyword_event") ?: ""
-//        val topic = arguments?.getString("keyword_topic") ?: ""
-//        val emotion = arguments?.getString("keyword_emotion") ?: ""
-//
-//        // AppCompatButton 텍스트 변경
-//        binding.keywordPlace.text = place
-//        binding.keywordEvent.text = event
-//        binding.keywordTopic.text = topic
-//        binding.keywordEmotion.text = emotion
+        // name 지정
+//        profileViewModel.nameFlow.observe(viewLifecycleOwner) { savedName ->
+//            binding.tvToday.text = "${savedName}의 하루" ?: "길동이"
+//        }
+        val prefs = context?.getSharedPreferences("my name", Context.MODE_PRIVATE)
+        val userName = prefs?.getString("userName", null)
+        binding.tvToday.text = "${userName}의 하루"
 
         // 다음 프래그먼트로 이동
         binding.btnSummarizeChat1.setOnClickListener {
             (activity as DiaryActivity).setFragment(Summarize2Fragment())
-//            arguments = Bundle().apply {
-//                putString("place", place)
-//                putString("event", event)
-//                putString("topic", topic)
-//                putString("emotion",emotion)
-//            }
         }
 
         binding.btnNext1.setOnClickListener {

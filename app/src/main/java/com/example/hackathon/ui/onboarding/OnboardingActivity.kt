@@ -49,7 +49,7 @@ class OnboardingActivity : AppCompatActivity() {
                     .collect { (_, completed) ->
                         if (!navigated) {
                             navigated = true
-                            val next = if (completed) HomeActivity::class.java else LoginActivity::class.java
+                            val next = if (!completed) HomeActivity::class.java else LoginActivity::class.java
                             startActivity(Intent(this@OnboardingActivity, next).apply {
                                 flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                             })

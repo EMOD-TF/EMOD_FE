@@ -24,6 +24,7 @@ import androidx.lifecycle.lifecycleScope
 import com.example.hackathon.BaseFragment
 import com.example.hackathon.Diary.summary.Summarize1Fragment
 import com.example.hackathon.Diary.viewmodel.SummaryViewModel
+import com.example.hackathon.HomeActivity
 import com.example.hackathon.data.remote.client.ApiClient
 import com.example.hackathon.data.remote.dto.proceed.ProceedRequest
 import com.example.hackathon.data.remote.dto.summary.SummaryRequest
@@ -43,6 +44,9 @@ class ChatFragment : BaseFragment<FragmentChatBinding>(FragmentChatBinding::infl
     private lateinit var tts: TextToSpeech
     private lateinit var speechRecognizer: SpeechRecognizer
     private var pendingSpeechText: String? = null
+
+    // currentStep 계산
+    private var currentStep: Int = 1
 
     // Activity 범위 viewModel
     private val viewModel: SummaryViewModel by activityViewModels()
@@ -119,21 +123,30 @@ class ChatFragment : BaseFragment<FragmentChatBinding>(FragmentChatBinding::infl
 
         // "답변 끝내기" 버튼
         binding.btnFinish.setOnClickListener {
-            if (lastQuestion.isNullOrBlank()) return@setOnClickListener
-            if (recognizedText.isNullOrBlank()) {
-                Toast.makeText(requireContext(), "음성을 먼저 입력해주세요", Toast.LENGTH_SHORT).show()
-                return@setOnClickListener
-            }
+            if (!lastQuestion.isNullOrBlank() && !recognizedText.isNullOrBlank()) {
+                conversation.add("assistant: $lastQuestion")
+                conversation.add("user: $recognizedText")
+                Toast.makeText(requireContext(), "질문을 보냈어요!", Toast.LENGTH_SHORT).show()
+                Log.d("ChatFragment", "보내는 대화: $conversation")
 
-            conversation.add("assistant: $lastQuestion")
-            conversation.add("user: $recognizedText")
-            Log.d("ChatFragment", "보내는 대화: $conversation")
-            callProceed(conversation, conversationStep())
+                // 버튼 눌렀을 때만 API 호출
+                callProceed(conversation, currentStep)
+            }
+        }
+
+        // "질문 다시 듣기" 버튼
+        binding.btnAgain.setOnClickListener {
+            if (!lastQuestion.isNullOrBlank()) {
+                speakAndStartListening(lastQuestion!!)
+            } else {
+                Toast.makeText(requireContext(), "다시 들을 질문이 없어요", Toast.LENGTH_SHORT).show()
+            }
         }
 
         // 뒤로가기
         binding.icTurnoff.setOnClickListener {
-            (activity as DiaryActivity).setFragment(Summarize1Fragment())
+            val intent = Intent(requireContext(), HomeActivity::class.java)
+            startActivity(intent)
         }
     }
 
@@ -145,6 +158,7 @@ class ChatFragment : BaseFragment<FragmentChatBinding>(FragmentChatBinding::infl
                     ProceedRequest(conversation, currentStep)
                 )
                 Log.d("ChatFragment", "API Response: $response")
+                Log.d("ChatFragment", "currentStep: ${currentStep}")
 
                 if (response.isSuccessful) {
                     val body = response.body()
@@ -153,21 +167,35 @@ class ChatFragment : BaseFragment<FragmentChatBinding>(FragmentChatBinding::infl
                         lastQuestion = it.questionToAsk
 
                         if (!it.isAnswerValid) {
-                            // 질문을 TextView & TTS로 출력
+                            // 답변이 부족 → 같은 질문 반복
                             binding.tvChatIng.text = it.questionToAsk
+                            binding.tvChatIng.visibility = View.VISIBLE
+                            binding.tvSequence.text = "${currentStep}번째 질문"
                             speakAndStartListening(it.questionToAsk)
                         } else {
-                            // ✅ 마지막 단계 체크
+                            // 답변이 충분 → 다음 질문 준비
+                            lastQuestion = it.questionToAsk
+
+                            // 마지막 단계 체크
                             if (it.isAnswerValid && it.nextStep == 5 && currentStep == 4) {
                                 Log.d("ChatFragment", "마지막 단계 완료 → Summary 호출")
                                 callSummary()
                             } else if (it.nextStep <= 4) {
-                                callProceed(conversation, it.nextStep)
+                                // 🚨 여기서는 callProceed를 재호출하지 않고
+                                // 다음 질문을 UI와 TTS로만 보여준다
+                                binding.tvChatIng.text = it.questionToAsk
+                                binding.tvChatIng.visibility = View.VISIBLE
+                                speakAndStartListening(it.questionToAsk)
+
+                                this@ChatFragment.currentStep = it.nextStep
                             } else {
                                 callSummary()
                             }
                         }
                     }
+                } else if (currentStep >= 5) {
+                    Log.d("ChatFragment", "렉 먹어서 API 제대로 안됨.")
+                    callSummary()
                 }
             } catch (e: Exception) {
                 Log.e("ChatFragment", "API Exception", e)
@@ -184,26 +212,6 @@ class ChatFragment : BaseFragment<FragmentChatBinding>(FragmentChatBinding::infl
                     val body = response.body()
                     body?.let {
                         Log.d("ChatFragment", "Summary: $it")
-
-//                        // 👉 데이터 번들에 담기 (keyword + sentence)
-//                        val bundle = Bundle().apply {
-//                            putString("keyword_place", it.place.keyword)
-//                            putString("sentence_place", it.place.sentence)
-//
-//                            putString("keyword_event", it.event.keyword)
-//                            putString("sentence_event", it.event.sentence)
-//
-//                            putString("keyword_topic", it.topic.keyword)
-//                            putString("sentence_topic", it.topic.sentence)
-//
-//                            putString("keyword_emotion", it.emotion.keyword)
-//                            putString("sentence_emotion", it.emotion.sentence)
-//                        }
-//
-//                        // 👉 Summarize1Fragment 로 이동
-//                        val fragment = Summarize1Fragment().apply {
-//                            arguments = bundle
-//                        }
 
                         // ViewModel에 데이터 저장
                         viewModel.summaryData.value = it
@@ -256,16 +264,10 @@ class ChatFragment : BaseFragment<FragmentChatBinding>(FragmentChatBinding::infl
         speechRecognizer.startListening(intent)
     }
 
-    // 현재 step 계산
-    private fun conversationStep(): Int {
-        return (conversation.size / 2) + 1
-    }
-
     override fun onDestroyView() {
         super.onDestroyView()
         tts.stop()
         tts.shutdown()
         speechRecognizer.destroy()
-        Log.d("ChatFragment", "Destroyed")
     }
 }

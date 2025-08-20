@@ -4,8 +4,10 @@
     <string name="summarize1">오늘 길동이는 어린이집에 다녀왔구나!</string>
     <string name="summarize2">어린이집에서 블럭놀이를 하면서 길동이가 좋아하는 버스랑 자동차를 만들었어. 정말 멋있었겠다!</string>
     <string name="summarize3">하지만, 열심히 만든 버스랑 자동차 블럭을 지나가던 친구가 실수로 넘어뜨렸지?</string>
-    <string name="emotion">길동이는 오늘 그런 일이 있어서 슬펐겠구나.그럼 이제 슬플 땐 어떻게 표현해야하는지 알아볼까?</string>
-    <string name="summarize4">길동이가 열심히 만든 버스랑 자동차가 망가져서, 길동이는 엄청 속상했을 거야.</string>
+    <string name="sad_emotion">은/는 오늘 그런 일이 있어서 슬펐겠구나.그럼 이제 슬플 땐 어떻게 표현해야하는지 알아볼까?</string>
+    <string name="happy_emotion">은/는 오늘 그런 일이 있어서 기뻤겠구나. 그럼 이제 기쁠 땐 어떻게 표현해야하는지 알아볼까?</string>
+    <string name="angry_emotion">은/는 오늘 그런 일이 있어서 화가 났겠구나. 그럼 이제 화가 날 땐 어떻게 표현해야하는지 알아볼까?</string>
+    <string name="summarize4">이/가 열심히 만든 버스랑 자동차가 망가져서, 길동이는 엄청 속상했을 거야.</string>
 
     <string name="onboarding_title_1">우리 아이 맞춤형 감정 학습</string>
     <string name="onboarding_title_2">이모디와 함께 해요!</string>

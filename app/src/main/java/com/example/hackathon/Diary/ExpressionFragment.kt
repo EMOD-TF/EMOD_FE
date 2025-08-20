@@ -1,11 +1,13 @@
 package com.example.hackathon.Diary
 
+import android.content.Context
 import android.graphics.Color
 import android.graphics.Outline
 import android.os.Bundle
 import android.text.Spannable
 import android.text.SpannableString
 import android.text.style.ForegroundColorSpan
+import android.util.Log
 import android.util.TypedValue
 import android.view.View
 import android.view.ViewOutlineProvider
@@ -19,43 +21,87 @@ import com.example.hackathon.R
 import com.example.hackathon.databinding.FragmentExpressionBinding
 import androidx.camera.core.*
 import androidx.camera.view.PreviewView
+import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
+import com.example.hackathon.Diary.viewmodel.SummaryViewModel
+import com.example.hackathon.data.repository.ProfileRepository
+import com.example.hackathon.ui.signUp.SignupViewModel
 import com.google.mlkit.vision.common.InputImage
 import com.google.mlkit.vision.face.*
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import java.util.concurrent.Executors
-
-
 
 class ExpressionFragment : BaseFragment<FragmentExpressionBinding>(FragmentExpressionBinding::inflate) {
 
+    private val viewModel: SummaryViewModel by activityViewModels()
+
     private val cameraExecutor = Executors.newSingleThreadExecutor()
+    private var emotionWord: String = ""
+    private var userName: String = ""
     private lateinit var faceDetector: FaceDetector
 
     // 외부에서 전달받을 목표 감정 (예: "기쁨", "속상", "화남")
-    private var targetEmotion: String = "속상" // 기본값, 실제로는 arguments나 ViewModel에서 가져오기
+    private var targetEmotion: String = "" // 기본값, 실제로는 arguments나 ViewModel에서 가져오기
+    private var targetText: String = ""
+    private var fontColor: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        // 예: arguments로 전달받기
-        targetEmotion = arguments?.getString("targetEmotion") ?: "속상"
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // 감정 폰트 일부 색 바꾸기
-        val targetText = targetEmotion
-        val fullText = "${targetText} 땐,"
-        val spannable = SpannableString(fullText)
-        val start = fullText.indexOf(targetText)
-        val end = start + targetText.length
-        spannable.setSpan(
-            ForegroundColorSpan(Color.parseColor("#0080FF")),
-            start, end, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
-        )
-        binding.tvEmotionWord.text = spannable
+        val prefs = context?.getSharedPreferences("my name", Context.MODE_PRIVATE)
+        val userName = prefs?.getString("userName", null)
 
-        // 초기 텍스트 세팅
-        binding.tvExpression.text = "현재 인식할 감정: $targetEmotion"
+        viewModel.summaryData.observe(viewLifecycleOwner) { summary ->
+            targetEmotion = summary.emotion.keyword
+
+
+            if (targetEmotion == "기쁨") {
+                binding.emotionCharacter.setImageResource(R.drawable.emotion_happy)
+                binding.imgExpressionLine.setImageResource(R.drawable.bg_happy_emotion_line)
+                targetText = "기쁠"
+                emotionWord = "기쁜"
+                fontColor = "#FFB108"
+            }
+            else if (targetEmotion == "화남") {
+                binding.emotionCharacter.setImageResource(R.drawable.emotion_angry)
+                binding.imgExpressionLine.setImageResource(R.drawable.bg_angry_emotion_line)
+                targetText = "화날"
+                emotionWord = "화난"
+                fontColor = "#FF0000"
+            }
+            else {
+                binding.emotionCharacter.setImageResource(R.drawable.emotion_sad)
+                binding.imgExpressionLine.setImageResource(R.drawable.bg_sad_emotion_line)
+                targetText = "슬플"
+                emotionWord = "속상한"
+                fontColor = "#0080FF"
+            }
+            // 감정 폰트 일부 색 바꾸기
+            val fullText = "${targetText} 땐,"
+            val spannable = SpannableString(fullText)
+            val start = fullText.indexOf(targetText)
+            val end = start + targetText.length
+            spannable.setSpan(
+                ForegroundColorSpan(Color.parseColor(fontColor)),
+                start, end, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+            )
+            binding.tvEmotionWord.text = spannable
+            // 초기 텍스트 세팅
+            binding.tvExpression.text = "현재 인식할 감정: $targetEmotion"
+        }
+
+
+
+        Log.d("ChatFragment", "${targetText}")
+
+
 
         val options = FaceDetectorOptions.Builder()
             .setPerformanceMode(FaceDetectorOptions.PERFORMANCE_MODE_FAST)
@@ -131,14 +177,19 @@ class ExpressionFragment : BaseFragment<FragmentExpressionBinding>(FragmentExpre
 
                             activity?.runOnUiThread {
                                 if (detectedEmotion == targetEmotion) {
-                                    binding.tvExpression.text = "$targetEmotion 표정 인식 성공!"
+                                    // 표정 따라하기 성공 시
+                                    binding.tvExpression.text = "정말 잘했어!"
+                                    lifecycleScope.launch {
+                                        delay(2000)
+                                        (activity as DiaryActivity).setFragment(FinishEmoFragment())
+                                    }
                                 } else {
-                                    binding.tvExpression.text = "현재 인식 표정: $detectedEmotion"
+                                    binding.tvExpression.text = "이제 사진에 있는\n${emotionWord} 표정을 따라해볼까?"
                                 }
                             }
                         } else {
                             activity?.runOnUiThread {
-                                binding.tvExpression.text = "얼굴을 찾을 수 없습니다."
+                                binding.tvExpression.text = "얼굴 모양에\n${userName}의 얼굴을 맞춰봐!"
                             }
                         }
                         imageProxy.close()

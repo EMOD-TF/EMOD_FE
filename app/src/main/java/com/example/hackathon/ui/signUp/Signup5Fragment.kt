@@ -31,6 +31,9 @@ class Signup5Fragment
         val name = vm.name?.takeIf { it.isNotBlank() } ?: "우리 아이"
         binding.tvName.text = name
 
+        val prefs = context?.getSharedPreferences("my name", Context.MODE_PRIVATE)
+        prefs?.edit()?.putString("userName", "${name}")?.apply()
+
         binding.btnToHome.setOnClickListener { postProfileAndToMain() }
     }
 

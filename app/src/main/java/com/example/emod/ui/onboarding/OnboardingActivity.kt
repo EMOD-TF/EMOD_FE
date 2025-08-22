@@ -18,6 +18,7 @@ import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.launch
 import com.example.emod.data.local.datastore.AuthDataStore
 import com.example.emod.databinding.ActivityOnboardingBinding
+import kotlinx.coroutines.delay
 
 class OnboardingActivity : AppCompatActivity() {
     private lateinit var binding: ActivityOnboardingBinding
@@ -39,6 +40,7 @@ class OnboardingActivity : AppCompatActivity() {
 
         // 2) DataStore Flow 로 분기
         lifecycleScope.launch {
+            delay(2000)
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 // jwt가 존재하는 순간부터 분기 가능
                 store.jwtFlow

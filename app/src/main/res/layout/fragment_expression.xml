@@ -115,8 +115,7 @@
                 android:layout_height="390dp"
                 android:src="@drawable/bg_sad_emotion_line"
                 android:layout_gravity="center"
-                android:visibility="invisible"
-                android:elevation="4dp"/>
+                android:elevation="12dp"/>
 
             <androidx.camera.view.PreviewView
                 android:id="@+id/img_kid_expression"

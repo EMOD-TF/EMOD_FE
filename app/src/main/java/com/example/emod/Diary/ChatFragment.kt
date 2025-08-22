@@ -1,5 +1,6 @@
 package com.example.emod.Diary
 
+import android.Manifest
 import android.content.Intent
 import android.graphics.Outline
 import android.os.Bundle
@@ -18,6 +19,7 @@ import android.widget.Toast
 import androidx.camera.core.CameraSelector
 import androidx.camera.core.Preview
 import androidx.camera.lifecycle.ProcessCameraProvider
+import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
@@ -25,6 +27,7 @@ import com.example.emod.BaseFragment
 import com.example.emod.Diary.summary.Summarize1Fragment
 import com.example.emod.Diary.viewmodel.SummaryViewModel
 import com.example.emod.HomeActivity
+import com.example.emod.R
 import com.example.emod.data.remote.client.ApiClient
 import com.example.emod.data.remote.dto.proceed.ProceedRequest
 import com.example.emod.data.remote.dto.summary.SummaryRequest
@@ -58,8 +61,33 @@ class ChatFragment : BaseFragment<FragmentChatBinding>(FragmentChatBinding::infl
         }
     }
 
+
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        // STT 초기화
+        speechRecognizer = SpeechRecognizer.createSpeechRecognizer(requireContext())
+
+        speechRecognizer.setRecognitionListener(object : RecognitionListener {
+            override fun onResults(results: Bundle?) {
+                val matches = results?.getStringArrayList(SpeechRecognizer.RESULTS_RECOGNITION)
+                recognizedText = matches?.joinToString(" ") ?: ""
+                Log.d("ChatFragment", "인식된 음성: ${recognizedText}")
+                binding.btnFinish.isEnabled = true
+//                binding.tvUserInput.text = recognizedText
+            }
+            override fun onReadyForSpeech(p0: Bundle?) {}
+            override fun onRmsChanged(p0: Float) {}
+            override fun onBufferReceived(p0: ByteArray?) {}
+            override fun onEndOfSpeech() {}
+            override fun onError(p0: Int) {
+                Log.e("ChatFragment", "STT Error : ${p0}")
+            }
+            override fun onPartialResults(p0: Bundle?) {}
+            override fun onEvent(p0: Int, p1: Bundle?) {}
+            override fun onBeginningOfSpeech() {}
+        })
 
         requireActivity().supportFragmentManager.popBackStack()
 
@@ -115,8 +143,6 @@ class ChatFragment : BaseFragment<FragmentChatBinding>(FragmentChatBinding::infl
             }
         }
 
-        // STT 초기화
-        speechRecognizer = SpeechRecognizer.createSpeechRecognizer(requireContext())
 
         // 첫 질문 API 호출
         callProceed(emptyList(), 1)
@@ -124,6 +150,7 @@ class ChatFragment : BaseFragment<FragmentChatBinding>(FragmentChatBinding::infl
         // "답변 끝내기" 버튼
         binding.btnFinish.setOnClickListener {
             if (!lastQuestion.isNullOrBlank() && !recognizedText.isNullOrBlank()) {
+                Log.d("ChatFragment", "클릭됨")
                 conversation.add("assistant: $lastQuestion")
                 conversation.add("user: $recognizedText")
                 Toast.makeText(requireContext(), "질문을 보냈어요!", Toast.LENGTH_SHORT).show()
@@ -132,6 +159,7 @@ class ChatFragment : BaseFragment<FragmentChatBinding>(FragmentChatBinding::infl
                 // 버튼 눌렀을 때만 API 호출
                 callProceed(conversation, currentStep)
             }
+            binding.btnFinish.isEnabled = false
         }
 
         // "질문 다시 듣기" 버튼
@@ -165,12 +193,12 @@ class ChatFragment : BaseFragment<FragmentChatBinding>(FragmentChatBinding::infl
                     Log.d("ChatFragment", "API Body: $body")
                     body?.let {
                         lastQuestion = it.questionToAsk
+                        Log.d("ChatFragment", "LastQuestion : ${lastQuestion}")
 
                         if (!it.isAnswerValid) {
                             // 답변이 부족 → 같은 질문 반복
                             binding.tvChatIng.text = it.questionToAsk
                             binding.tvChatIng.visibility = View.VISIBLE
-                            binding.tvSequence.text = "${currentStep}번째 질문"
                             speakAndStartListening(it.questionToAsk)
                         } else {
                             // 답변이 충분 → 다음 질문 준비
@@ -188,6 +216,13 @@ class ChatFragment : BaseFragment<FragmentChatBinding>(FragmentChatBinding::infl
                                 speakAndStartListening(it.questionToAsk)
 
                                 this@ChatFragment.currentStep = it.nextStep
+
+                                when (it.nextStep) {
+                                    2 -> binding.bar.setImageResource(R.drawable.bar_2)
+                                    3 -> binding.bar.setImageResource(R.drawable.bar_3)
+                                    4 -> binding.bar.setImageResource(R.drawable.bar_4)
+                                    else -> binding.bar.setImageResource(R.drawable.bar_1) // 기본값 (옵션)
+                                }
                             } else {
                                 callSummary()
                             }
@@ -245,21 +280,7 @@ class ChatFragment : BaseFragment<FragmentChatBinding>(FragmentChatBinding::infl
             putExtra(RecognizerIntent.EXTRA_PARTIAL_RESULTS, false)
         }
 
-        speechRecognizer.setRecognitionListener(object : RecognitionListener {
-            override fun onResults(results: Bundle?) {
-                val matches = results?.getStringArrayList(SpeechRecognizer.RESULTS_RECOGNITION)
-                recognizedText = matches?.joinToString(" ") ?: ""
-//                binding.tvUserInput.text = recognizedText
-            }
-            override fun onReadyForSpeech(p0: Bundle?) {}
-            override fun onRmsChanged(p0: Float) {}
-            override fun onBufferReceived(p0: ByteArray?) {}
-            override fun onEndOfSpeech() {}
-            override fun onError(p0: Int) {}
-            override fun onPartialResults(p0: Bundle?) {}
-            override fun onEvent(p0: Int, p1: Bundle?) {}
-            override fun onBeginningOfSpeech() {}
-        })
+        Log.d("ChatFragment", "음성인식 시작")
 
         speechRecognizer.startListening(intent)
     }

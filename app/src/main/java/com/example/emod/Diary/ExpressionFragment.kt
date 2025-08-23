@@ -43,6 +43,8 @@ class ExpressionFragment : BaseFragment<FragmentExpressionBinding>(FragmentExpre
     private var targetText: String = ""
     private var fontColor: String = ""
 
+    private var isSuccess = false  // Fragment 멤버 변수로 선언 (초기값 false)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -61,26 +63,26 @@ class ExpressionFragment : BaseFragment<FragmentExpressionBinding>(FragmentExpre
             if (targetEmotion == "기쁨") {
                 binding.emotionCharacter.setImageResource(R.drawable.emotion_happy)
                 binding.imgExpressionLine.setImageResource(R.drawable.bg_happy_emotion_line)
-                targetText = "기쁠"
+                targetText = "기쁠 땐"
                 emotionWord = "기쁜"
                 fontColor = "#FFB108"
             }
             else if (targetEmotion == "화남") {
                 binding.emotionCharacter.setImageResource(R.drawable.emotion_angry)
                 binding.imgExpressionLine.setImageResource(R.drawable.bg_angry_emotion_line)
-                targetText = "화날"
+                targetText = "화날 땐"
                 emotionWord = "화난"
                 fontColor = "#FF0000"
             }
             else {
                 binding.emotionCharacter.setImageResource(R.drawable.emotion_sad)
                 binding.imgExpressionLine.setImageResource(R.drawable.bg_sad_emotion_line)
-                targetText = "슬플"
+                targetText = "슬플 땐"
                 emotionWord = "속상한"
                 fontColor = "#0080FF"
             }
             // 감정 폰트 일부 색 바꾸기
-            val fullText = "${targetText} 땐,"
+            val fullText = "${targetText}"
             val spannable = SpannableString(fullText)
             val start = fullText.indexOf(targetText)
             val end = start + targetText.length
@@ -172,20 +174,23 @@ class ExpressionFragment : BaseFragment<FragmentExpressionBinding>(FragmentExpre
                             val detectedEmotion = recognizeEmotion(face)
 
                             activity?.runOnUiThread {
-                                if (detectedEmotion == targetEmotion) {
+                                if (!isSuccess && detectedEmotion == targetEmotion) {
                                     // 표정 따라하기 성공 시
                                     binding.tvExpression.text = "정말 잘했어!"
+                                    isSuccess = true
                                     lifecycleScope.launch {
                                         delay(2000)
                                         (activity as DiaryActivity).setFragment(FinishEmoFragment())
                                     }
-                                } else {
+                                } else if (!isSuccess) {
                                     binding.tvExpression.text = "이제 사진에 있는\n${emotionWord} 표정을 따라해볼까?"
                                 }
                             }
                         } else {
                             activity?.runOnUiThread {
-                                binding.tvExpression.text = "얼굴 모양에\n${userName}의 얼굴을 맞춰봐!"
+                                if (!isSuccess) {
+                                    binding.tvExpression.text = "얼굴 모양에\n${userName}의 얼굴을 맞춰봐!"
+                                }
                             }
                         }
                         imageProxy.close()

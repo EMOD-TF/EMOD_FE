@@ -15,6 +15,9 @@ import android.util.Log
 import android.util.TypedValue
 import android.view.View
 import android.view.ViewOutlineProvider
+import android.view.animation.Animation
+import android.view.animation.AnimationUtils
+import android.widget.TextView
 import android.widget.Toast
 import androidx.camera.core.CameraSelector
 import androidx.camera.core.Preview
@@ -47,6 +50,9 @@ class ChatFragment : BaseFragment<FragmentChatBinding>(FragmentChatBinding::infl
     private lateinit var tts: TextToSpeech
     private lateinit var speechRecognizer: SpeechRecognizer
     private var pendingSpeechText: String? = null
+    private lateinit var userChat: TextView
+    private lateinit var characterChat: TextView
+    private lateinit var anim : Animation
 
     // currentStep 계산
     private var currentStep: Int = 1
@@ -62,9 +68,13 @@ class ChatFragment : BaseFragment<FragmentChatBinding>(FragmentChatBinding::infl
     }
 
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        // userChat, characterChat, anim 초기화
+        userChat = binding.tvChatUser
+        characterChat = binding.tvChatCharacter
+        anim = AnimationUtils.loadAnimation(requireContext(), R.anim.slide_up_fade_out)
 
         // STT 초기화
         speechRecognizer = SpeechRecognizer.createSpeechRecognizer(requireContext())
@@ -75,9 +85,12 @@ class ChatFragment : BaseFragment<FragmentChatBinding>(FragmentChatBinding::infl
                 recognizedText = matches?.joinToString(" ") ?: ""
                 Log.d("ChatFragment", "인식된 음성: ${recognizedText}")
                 binding.btnFinish.isEnabled = true
+                showTypingChat(userChat, "${recognizedText}")
 //                binding.tvUserInput.text = recognizedText
             }
-            override fun onReadyForSpeech(p0: Bundle?) {}
+            override fun onReadyForSpeech(p0: Bundle?) {
+                Toast.makeText(requireContext(), "답변을 말해주세요!", Toast.LENGTH_SHORT).show()
+            }
             override fun onRmsChanged(p0: Float) {}
             override fun onBufferReceived(p0: ByteArray?) {}
             override fun onEndOfSpeech() {}
@@ -131,6 +144,7 @@ class ChatFragment : BaseFragment<FragmentChatBinding>(FragmentChatBinding::infl
                     override fun onStart(utteranceId: String?) {}
                     override fun onDone(utteranceId: String?) {
                         Handler(Looper.getMainLooper()).post { startSpeechRecognition() }
+//                        goneChat(characterChat)
                     }
                     override fun onError(utteranceId: String?) {}
                 })
@@ -178,6 +192,9 @@ class ChatFragment : BaseFragment<FragmentChatBinding>(FragmentChatBinding::infl
         }
     }
 
+    private fun setCharacterAnim(anim: AnimationUtils) {
+    }
+
     // ✅ proceed API 호출
     private fun callProceed(conversation: List<String>, currentStep: Int) {
         lifecycleScope.launch {
@@ -197,8 +214,8 @@ class ChatFragment : BaseFragment<FragmentChatBinding>(FragmentChatBinding::infl
 
                         if (!it.isAnswerValid) {
                             // 답변이 부족 → 같은 질문 반복
-                            binding.tvChatIng.text = it.questionToAsk
-                            binding.tvChatIng.visibility = View.VISIBLE
+//                            binding.tvChatCharacter.text = it.questionToAsk
+                            binding.tvChatCharacter.visibility = View.VISIBLE
                             speakAndStartListening(it.questionToAsk)
                         } else {
                             // 답변이 충분 → 다음 질문 준비
@@ -211,8 +228,8 @@ class ChatFragment : BaseFragment<FragmentChatBinding>(FragmentChatBinding::infl
                             } else if (it.nextStep <= 4) {
                                 // 🚨 여기서는 callProceed를 재호출하지 않고
                                 // 다음 질문을 UI와 TTS로만 보여준다
-                                binding.tvChatIng.text = it.questionToAsk
-                                binding.tvChatIng.visibility = View.VISIBLE
+                                binding.tvChatCharacter.text = it.questionToAsk
+                                binding.tvChatCharacter.visibility = View.VISIBLE
                                 speakAndStartListening(it.questionToAsk)
 
                                 this@ChatFragment.currentStep = it.nextStep
@@ -265,6 +282,7 @@ class ChatFragment : BaseFragment<FragmentChatBinding>(FragmentChatBinding::infl
         if (isTtsInitialized) {
             val params = Bundle()
             tts.speak(text, TextToSpeech.QUEUE_FLUSH, params, "QUESTION_ID")
+            showTypingChat(characterChat, text)
         } else {
             // 아직 TTS 준비 안 됐으면 text를 대기큐에 넣어둔다!
             pendingSpeechText = text
@@ -284,6 +302,45 @@ class ChatFragment : BaseFragment<FragmentChatBinding>(FragmentChatBinding::infl
 
         speechRecognizer.startListening(intent)
     }
+
+
+    // 나타나는 애니메이션
+    fun showTypingChat(textView: TextView, message: String) {
+        // 1) 처음엔 숨겨두기
+        textView.text = ""
+        textView.visibility = View.VISIBLE
+
+        // 2) 등장 애니메이션 (fade in + scale in 같은 효과)
+        val fadeIn = AnimationUtils.loadAnimation(textView.context, R.anim.slide_up_fade_in).apply {
+            duration = 300
+        }
+        textView.startAnimation(fadeIn)
+
+        // 3) 타이핑 효과
+        val typingDelay: Long = 50 // 글자당 지연시간 (ms)
+        val handler = Handler(Looper.getMainLooper())
+
+        for (i in message.indices) {
+            handler.postDelayed({
+                textView.text = message.substring(0, i + 1)
+            }, typingDelay * i)
+        }
+
+        // 4) (선택) 일정 시간 뒤 사라지는 애니메이션 실행
+        handler.postDelayed({
+            val fadeOutUp = AnimationUtils.loadAnimation(textView.context, R.anim.slide_up_fade_out)
+            fadeOutUp.setAnimationListener(object : Animation.AnimationListener {
+                override fun onAnimationStart(animation: Animation?) {}
+                override fun onAnimationEnd(animation: Animation?) {
+                    textView.visibility = View.GONE
+                }
+                override fun onAnimationRepeat(animation: Animation?) {}
+            })
+            textView.startAnimation(fadeOutUp)
+        }, typingDelay * message.length + 2000) // 다 타이핑되고 2초 뒤 사라짐
+    }
+
+
 
     override fun onDestroyView() {
         super.onDestroyView()

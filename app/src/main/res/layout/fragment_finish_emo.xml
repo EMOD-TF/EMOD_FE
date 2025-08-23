@@ -20,7 +20,7 @@
         android:id="@+id/tv_finish_dairy"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/bg_chat_ing"
+        android:background="@drawable/bg_chat_character"
         android:text="정말 잘했어!"
         android:textSize="27sp"
         style="@style/extrabold"

@@ -4,6 +4,11 @@ import com.example.hackathon.data.remote.dto.auth.AuthSignupRequest
 import com.example.hackathon.data.remote.dto.auth.AuthSignupResponse
 import com.example.hackathon.data.remote.dto.profile.ProfileRequest
 import com.example.hackathon.data.remote.dto.profile.ProfileResponse
+import com.example.hackathon.data.remote.dto.ProceedRequest
+import com.example.hackathon.data.remote.dto.ProceedResponse
+import com.example.hackathon.data.remote.dto.SummaryRequest
+import com.example.hackathon.data.remote.dto.SummaryResponse
+import retrofit2.Call
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.Header

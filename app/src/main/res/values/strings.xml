@@ -53,4 +53,17 @@
     <string name="signup_complete_title1">이모디와 함께, </string>
     <string name="signup_complete_title2">의 마음이 자라나요!</string>
 
+    <string name="parent_password_setting">보호자 페이지 비밀번호 설정</string>
+    <string name="parent_password_setting_two">한번 더 입력해주세요</string>
+    <string name="parent_password">보호자 페이지 비밀번호 입력</string>
+
+    <string name="diary_placeholder">길동이는 어린이집에서 블럭 놀이를 하였어요.\n
+        블럭으로 길동이가 좋아하는 버스와 자동차를 만들었어요.\n
+        버스와 자동차를 완성한 후 기분이 좋았어요.\n
+        하지만, 어린이집의 친구가 블럭을 망가뜨려서 속상함을 느꼈어요.</string>
+    <string name="diary_guide_placeholder">집중하는 시간을 방해받은 길동이는 굉장히 예민한 상태일 수 있어요.\n
+        다음에 비슷한 상황이 발생했을 때, 아이가 잘못된 감정 표출을
+        하지 않도록 상황을 대처하는 훈련을 해주세요.</string>
+
+
 </resources>

@@ -39,6 +39,7 @@
         app:layout_constraintEnd_toEndOf="parent"/>
     
     <LinearLayout
+        android:id="@+id/ll_profile"
         android:layout_width="100dp"
         android:layout_height="154dp"
         android:orientation="vertical"

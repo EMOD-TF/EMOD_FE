@@ -2,8 +2,8 @@ package com.example.hackathon.ui.parent
 
 import android.os.Bundle
 import android.view.View
-import com.example.hackathon.BaseFragment
-import com.example.hackathon.databinding.FragmentParent2Binding
+import com.example.emod.BaseFragment
+import com.example.emod.databinding.FragmentParent2Binding
 
 class Parent2Fragment
     : BaseFragment<FragmentParent2Binding>(FragmentParent2Binding::inflate) {

@@ -57,7 +57,7 @@
             android:name=".MainActivity"
             android:exported="false"/>
         <activity
-            android:name=".ParentPasswordActivity"
+            android:name=".ui.parent.ParentPasswordActivity"
             android:exported="false"/>
         <activity
             android:name="com.example.hackathon.ui.parent.ParentActivity"

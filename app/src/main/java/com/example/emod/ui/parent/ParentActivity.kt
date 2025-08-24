@@ -4,8 +4,8 @@ import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import com.example.hackathon.databinding.ActivityParentBinding
-import com.example.hackathon.R
+import com.example.emod.R
+import com.example.emod.databinding.ActivityParentBinding
 
 class ParentActivity : AppCompatActivity() {
     private lateinit var binding: ActivityParentBinding

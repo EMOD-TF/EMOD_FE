@@ -1,4 +1,4 @@
-package com.example.hackathon
+package com.example.emod.ui.parent
 
 import android.animation.ObjectAnimator
 import android.app.AlertDialog
@@ -10,8 +10,9 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import com.example.emod.R
+import com.example.emod.databinding.ActivityParentPasswordBinding
 import com.example.hackathon.core.ParentPasswordStore
-import com.example.hackathon.databinding.ActivityParentPasswordBinding
 import com.example.hackathon.ui.parent.ParentActivity
 
 class ParentPasswordActivity : AppCompatActivity() {
@@ -136,7 +137,7 @@ class ParentPasswordActivity : AppCompatActivity() {
         titleView.text = when (mode) {
             Mode.SETUP_1 -> getString(R.string.parent_password_setting)
             Mode.SETUP_2 -> getString(R.string.parent_password_setting_two)
-            Mode.VERIFY  -> getString(R.string.parent_password)
+            Mode.VERIFY -> getString(R.string.parent_password)
         }
     }
 

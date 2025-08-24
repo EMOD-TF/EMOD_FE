@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.hackathon"
+    namespace = "com.example.emod"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.example.hackathon"
+        applicationId = "com.example.emod"
         minSdk = 27
         targetSdk = 35
         versionCode = 1

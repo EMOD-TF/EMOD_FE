@@ -10,11 +10,9 @@
         android:id="@+id/imageView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="-100dp"
         android:contentDescription="Background Image"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/bg_grass_2" />
 
@@ -22,7 +20,7 @@
         android:id="@+id/imageView3"
         android:layout_width="1000dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="-15dp"
+        android:layout_marginTop="20dp"
         android:contentDescription="background Cloud Image"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -35,12 +33,13 @@
         android:layout_width="229dp"
         android:layout_height="303dp"
         android:src="@drawable/lion_character_4x"
-        android:layout_marginTop="140dp"
+        android:layout_marginTop="190dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
     
     <LinearLayout
+        android:id="@+id/ll_profile"
         android:layout_width="100dp"
         android:layout_height="154dp"
         android:orientation="vertical"

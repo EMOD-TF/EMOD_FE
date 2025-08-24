@@ -42,8 +42,8 @@
 
     <androidx.appcompat.widget.AppCompatImageButton
         android:id="@+id/btn_turnoff"
-        android:layout_width="130dp"
-        android:layout_height="130dp"
+        android:layout_width="133dp"
+        android:layout_height="133dp"
         android:background="@android:color/transparent"
         android:src="@drawable/ic_turnoff"
         android:layout_marginBottom="66dp"

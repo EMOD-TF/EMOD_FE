@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Diary.Summarize1Fragment"
+    tools:context=".Diary.summary.Summarize1Fragment"
     android:orientation="vertical">
 
 
@@ -20,60 +20,46 @@
             android:textSize="37sp"
             style="@style/extrabold"
             android:gravity="center_horizontal"
-            android:layout_marginTop="66dp"/>
+            android:layout_marginTop="86dp"/>
+
 
         <LinearLayout
+            android:id="@+id/ll_emotion"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginHorizontal="180dp"
-            android:paddingVertical="45dp"
-            android:gravity="center_vertical"
-            >
+            android:gravity="center">
 
+            <FrameLayout
+                android:layout_width="166dp"
+                android:layout_height="270dp"
+                >
 
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/ic_big_circle"/>
 
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/ic_emotion"
+                    android:layout_width="106dp"
+                    android:layout_height="98dp"
+                    android:src="@drawable/ic_sad"
+                    android:layout_gravity="center"/>
 
-            <LinearLayout
-                android:id="@+id/ll_emotion"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_weight="1"
-                android:gravity="center">
-
-                <FrameLayout
-                    android:layout_width="166dp"
-                    android:layout_height="230dp">
-
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:src="@drawable/ic_big_circle"/>
-
-                    <androidx.appcompat.widget.AppCompatImageView
-                        android:id="@+id/ic_emotion"
-                        android:layout_width="106dp"
-                        android:layout_height="98dp"
-                        android:src="@drawable/ic_emotion"
-                        android:layout_gravity="center"/>
-
-                    <TextView
-                        android:id="@+id/tv_emotion"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="슬픔"
-                        android:gravity="center_horizontal"
-                        android:textSize="26sp"
-                        android:textColor="#0080FF"
-                        style="@style/extrabold"
-                        android:layout_marginTop="27dp"
-                        android:layout_gravity="bottom"/>
-                </FrameLayout>
-
-            </LinearLayout>
+                <TextView
+                    android:id="@+id/keyword_emotion"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="슬픔"
+                    android:gravity="center_horizontal"
+                    android:textSize="26sp"
+                    android:textColor="#0080FF"
+                    style="@style/extrabold"
+                    android:layout_gravity="bottom"/>
+            </FrameLayout>
 
         </LinearLayout>
+
 
         <FrameLayout
             android:layout_width="match_parent"
@@ -83,17 +69,17 @@
                 android:layout_width="800dp"
                 android:layout_height="200dp"
                 android:elevation="1dp"
-                android:layout_gravity="center_horizontal">
+                android:layout_marginBottom="76dp"
+                android:layout_gravity="center_horizontal|bottom">
 
                 <ImageButton
                     android:layout_width="719dp"
                     android:layout_height="166dp"
-                    android:src="@drawable/bg_third_chat"
-                    android:background="@drawable/box_shadow"
+                    android:layout_gravity="end"
                     android:layout_marginTop="32dp"
                     android:layout_marginEnd="39dp"
-                    android:layout_gravity="end"
-                    />
+                    android:background="@drawable/box_shadow"
+                    android:src="@drawable/bg_third_chat" />
 
                 <ImageButton
                     android:layout_width="754dp"
@@ -123,9 +109,9 @@
                         android:id="@+id/tv_chat"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/emotion"
+                        android:text="@string/sad_emotion"
                         style="@style/extrabold"
-                        android:textSize="27sp"
+                        android:textSize="23sp"
                         android:layout_gravity="center"
                         android:gravity="center"
                         android:layout_marginStart="75dp"
@@ -142,10 +128,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_next"
-                android:layout_gravity="center"
+                android:layout_gravity="center|bottom"
                 android:elevation="4dp"
                 android:background="@android:color/transparent"
-                android:layout_marginTop="78dp"/>
+                android:layout_marginBottom="30dp"/>
 
             <ImageView
                 android:id="@+id/bg_grass"

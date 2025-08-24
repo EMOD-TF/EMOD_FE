@@ -1,13 +1,13 @@
 package com.example.hackathon.data.remote.api
 
-import com.example.hackathon.data.remote.dto.auth.AuthSignupRequest
-import com.example.hackathon.data.remote.dto.auth.AuthSignupResponse
-import com.example.hackathon.data.remote.dto.profile.ProfileRequest
-import com.example.hackathon.data.remote.dto.profile.ProfileResponse
-import com.example.hackathon.data.remote.dto.ProceedRequest
-import com.example.hackathon.data.remote.dto.ProceedResponse
-import com.example.hackathon.data.remote.dto.SummaryRequest
-import com.example.hackathon.data.remote.dto.SummaryResponse
+import com.example.emod.data.remote.dto.auth.AuthSignupRequest
+import com.example.emod.data.remote.dto.auth.AuthSignupResponse
+import com.example.emod.data.remote.dto.proceed.ProceedRequest
+import com.example.emod.data.remote.dto.proceed.ProceedResponse
+import com.example.emod.data.remote.dto.profile.ProfileRequest
+import com.example.emod.data.remote.dto.profile.ProfileResponse
+import com.example.emod.data.remote.dto.summary.SummaryRequest
+import com.example.emod.data.remote.dto.summary.SummaryResponse
 import retrofit2.Call
 import retrofit2.Response
 import retrofit2.http.Body

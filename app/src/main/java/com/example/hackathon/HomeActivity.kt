@@ -4,9 +4,9 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import com.example.hackathon.Diary.DiaryActivity
-import com.example.hackathon.databinding.ActivityHomeBinding
-import com.example.hackathon.ParentPasswordActivity
+import com.example.emod.Diary.DiaryActivity
+import com.example.emod.databinding.ActivityHomeBinding
+import com.example.emod.ui.parent.ParentPasswordActivity
 
 class HomeActivity : AppCompatActivity() {
     private lateinit var binding: ActivityHomeBinding

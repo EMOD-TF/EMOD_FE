@@ -19,5 +19,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Hackathon"
+rootProject.name = "EmoD"
 include(":app")

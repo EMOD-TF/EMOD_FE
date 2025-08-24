@@ -31,7 +31,7 @@
                 android:layout_height="wrap_content"
                 android:text="이름"
                 android:textColor="#7F7F7F"
-                android:textSize="26.67sp" />
+                android:textSize="24sp" />
 
             <Space
                 android:layout_width="0dp"
@@ -48,7 +48,7 @@
                 android:singleLine="true"
                 android:inputType="textPersonName"
                 android:textColor="@color/black"
-                android:textSize="26.67sp"
+                android:textSize="24sp"
                 android:background="@android:color/transparent"/>
         </LinearLayout>
 
@@ -71,7 +71,7 @@
                 android:layout_height="wrap_content"
                 android:text="생년 &amp; 월"
                 android:textColor="#7F7F7F"
-                android:textSize="26.67sp" />
+                android:textSize="24sp" />
 
             <Space
                 android:layout_width="0dp"
@@ -86,14 +86,14 @@
                 android:layout_height="wrap_content"
                 android:text="2020년 1월"
                 android:textColor="@color/black"
-                android:textSize="26.67sp"
+                android:textSize="24sp"
                 android:clickable="true"
                 android:focusable="true" />
         </LinearLayout>
 
         <Space
             android:layout_width="0dp"
-            android:layout_height="26.67dp" />
+            android:layout_height="25dp" />
 
         <!-- 성별 -->
         <LinearLayout
@@ -109,7 +109,7 @@
                 android:layout_height="wrap_content"
                 android:text="성별"
                 android:textColor="#7F7F7F"
-                android:textSize="26.67sp" />
+                android:textSize="24sp" />
 
             <Space
                 android:layout_width="0dp"
@@ -140,7 +140,7 @@
                     android:layout_height="wrap_content"
                     android:text="남자"
                     android:textColor="@color/black"
-                    android:textSize="26.67sp" />
+                    android:textSize="23sp" />
 
                 <Space
                     android:layout_width="73.33dp"
@@ -163,7 +163,7 @@
                     android:layout_height="wrap_content"
                     android:text="여자"
                     android:textColor="@color/black"
-                    android:textSize="26.67sp" />
+                    android:textSize="23sp" />
             </RadioGroup>
         </LinearLayout>
 

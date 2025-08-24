@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:fillViewport="true">
+    
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="106dp"
+        >
+
+        <LinearLayout
+            android:id="@+id/linearLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="100dp"
+            android:gravity="end"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:src="@drawable/ic_setting" />
+
+            <Space
+                android:layout_width="40dp"
+                android:layout_height="0dp" />
+
+            <ImageButton
+                android:id="@+id/btn_exit_parent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:src="@drawable/ic_cancel" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/profile_layout"
+            android:layout_marginTop="125dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:gravity="center"
+            android:orientation="vertical">
+            <FrameLayout
+                android:layout_width="142.67dp"
+                android:layout_height="142.67dp">
+                <ImageView
+                    android:background="@null"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_profile_ch"
+                    android:layout_gravity="center"
+                    android:scaleType="centerCrop"/>
+                <ImageButton
+                    android:background="@drawable/bg_btn_pencil"
+                    android:src="@drawable/btn_pencil"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="bottom|end"
+                    android:elevation="2dp"
+                    android:layout_margin="8dp"
+                    />
+            </FrameLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="김멋사"
+                style="@style/extrabold"
+                android:textSize="24.89sp"/>
+
+            <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:layout_width="368.67dp"
+                android:layout_height="80dp"
+                android:background="@drawable/bg_segment_container"
+                android:clipToPadding="false"
+                android:clipToOutline="true"
+                android:layout_marginTop="33.33dp"
+                >
+
+
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/segSwitch"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_centerVertical="true"
+                    android:splitTrack="false"
+                    android:showText="false"
+                    android:thumb="@drawable/seg_thumb"
+                    app:track="@drawable/seg_track_transparent"
+                    app:thumbTint="@null"
+                    app:trackTint="@null"/>
+
+                <LinearLayout
+                    android:id="@+id/labels"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:clickable="false"
+                    android:focusable="false">
+
+                    <TextView
+                        android:id="@+id/labelLeft"
+                        android:layout_width="89dp"
+                        android:layout_height="54dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        style="@style/extrabold"
+                        android:text="일기"
+                        android:textSize="32sp"
+                        android:textStyle="bold"
+                        android:textColor="#FFFFFFFF" />
+
+                    <TextView
+                        android:id="@+id/labelRight"
+                        android:layout_width="89dp"
+                        android:layout_height="54dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        style="@style/extrabold"
+                        android:text="리포트"
+                        android:textSize="32sp"
+                        android:textStyle="bold"
+                        android:textColor="#7F7F7F" />
+                </LinearLayout>
+            </RelativeLayout>
+        </LinearLayout>
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/parentFragmentContainerView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constrainedHeight="true"
+            app:layout_constraintTop_toBottomOf="@id/profile_layout"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="50dp"
+            tools:layout="@layout/fragment_parent1"
+            />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>

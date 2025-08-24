@@ -6,9 +6,10 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.core.content.ContextCompat
-import com.example.hackathon.BaseFragment
-import com.example.hackathon.R
-import com.example.hackathon.databinding.FragmentParent1Binding
+import com.example.emod.BaseFragment
+import com.example.emod.R
+import com.example.emod.databinding.FragmentParent1Binding
+
 
 class Parent1Fragment
     : BaseFragment<FragmentParent1Binding>(FragmentParent1Binding::inflate) {

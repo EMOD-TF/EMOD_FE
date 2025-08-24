@@ -23,6 +23,11 @@ class HomeActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        binding.btnProfile.setOnClickListener {
+            val intent = Intent(this, ParentPasswordActivity ::class.java)
+            startActivity(intent)
+        }
+
         enableEdgeToEdge()
         setContentView(binding.root)
     }

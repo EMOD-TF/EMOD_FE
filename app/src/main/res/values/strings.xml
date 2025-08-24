@@ -53,4 +53,9 @@
     <string name="signup_complete_title1">이모디와 함께, </string>
     <string name="signup_complete_title2">의 마음이 자라나요!</string>
 
+    <string name="parent_password_setting">보호자 페이지 비밀번호 설정</string>
+    <string name="parent_password_setting_two">한번 더 입력해주세요</string>
+    <string name="parent_password">보호자 페이지 비밀번호 입력</string>
+
+
 </resources>

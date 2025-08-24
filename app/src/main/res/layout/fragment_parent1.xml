@@ -29,9 +29,9 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="2025년 7월 둘째주"
+                    android:text="2025년 8월 다섯째주"
                     style="@style/bold"
-                    android:textSize="24sp"/>
+                    android:textSize="22sp"/>
                 <ImageView
                     android:layout_marginStart="6dp"
                     android:layout_width="wrap_content"
@@ -49,71 +49,26 @@
                 android:divider="@drawable/divider_horizontal_empty_52"
                 android:showDividers="middle">
                 <LinearLayout
+                    android:id="@+id/sundayLayout"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:gravity="center">
                     <TextView
-                        android:layout_width="22dp"
+                        android:id="@+id/sundayDateText"
+                        android:layout_width="wrap_content"
                         android:layout_height="48dp"
                         android:gravity="center"
                         style="@style/extrabold"
-                        android:text="1"
+                        android:text="24"
                         android:textSize="24sp"/>
                     <TextView
+                        android:id="@+id/sundayDayText"
                         android:layout_width="22dp"
                         android:layout_height="48dp"
                         android:gravity="center"
                         style="@style/extrabold"
-                        android:text="월"
-                        android:textSize="24sp"/>
-                    <ImageView
-                        android:layout_width="95dp"
-                        android:layout_height="95dp"
-                        android:src="@drawable/ic_lion_happy"/>
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:gravity="center">
-                    <TextView
-                        android:layout_width="22dp"
-                        android:layout_height="48dp"
-                        android:gravity="center"
-                        style="@style/extrabold"
-                        android:text="2"
-                        android:textSize="24sp"/>
-                    <TextView
-                        android:layout_width="22dp"
-                        android:layout_height="48dp"
-                        android:gravity="center"
-                        style="@style/extrabold"
-                        android:text="화"
-                        android:textSize="24sp"/>
-                    <ImageView
-                        android:layout_width="95dp"
-                        android:layout_height="95dp"
-                        android:src="@drawable/ic_lion_sad"/>
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:gravity="center">
-                    <TextView
-                        android:layout_width="22dp"
-                        android:layout_height="48dp"
-                        android:gravity="center"
-                        style="@style/extrabold"
-                        android:text="3"
-                        android:textSize="24sp"/>
-                    <TextView
-                        android:layout_width="22dp"
-                        android:layout_height="48dp"
-                        android:gravity="center"
-                        style="@style/extrabold"
-                        android:text="수"
+                        android:text="일"
                         android:textSize="24sp"/>
                     <ImageView
                         android:layout_width="95dp"
@@ -121,18 +76,106 @@
                         android:src="@drawable/ic_lion_angry"/>
                 </LinearLayout>
                 <LinearLayout
+                    android:id="@+id/mondayLayout"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:gravity="center">
                     <TextView
+                        android:id="@+id/mondayDateText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="48dp"
+                        android:gravity="center"
+                        style="@style/extrabold"
+                        android:textColor="#FFB108"
+                        android:text="25"
+                        android:textSize="24sp"/>
+                    <TextView
+                        android:id="@+id/mondayDayText"
                         android:layout_width="22dp"
                         android:layout_height="48dp"
                         android:gravity="center"
                         style="@style/extrabold"
-                        android:text="4"
+                        android:textColor="#FFB108"
+                        android:text="월"
+                        android:textSize="24sp"/>
+                    <ImageView
+                        android:layout_width="95dp"
+                        android:layout_height="95dp"
+                        android:src="@drawable/ic_lion_sad"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/tuesdayLayout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center">
+                    <TextView
+                        android:id="@+id/tuesdayDateText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="48dp"
+                        android:gravity="center"
+                        style="@style/extrabold"
+                        android:text="26"
                         android:textSize="24sp"/>
                     <TextView
+                        android:id="@+id/tuesdayDayText"
+                        android:layout_width="22dp"
+                        android:layout_height="48dp"
+                        android:gravity="center"
+                        style="@style/extrabold"
+                        android:text="화"
+                        android:textSize="24sp"/>
+                    <ImageView
+                        android:alpha="0.3"
+                        android:layout_width="95dp"
+                        android:layout_height="95dp"
+                        android:src="@drawable/ic_lion_happy"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/wednesdayLayout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center">
+                    <TextView
+                        android:id="@+id/wednesdayDateText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="48dp"
+                        android:gravity="center"
+                        style="@style/extrabold"
+                        android:text="27"
+                        android:textSize="24sp"/>
+                    <TextView
+                        android:id="@+id/wednesdayDayText"
+                        android:layout_width="22dp"
+                        android:layout_height="48dp"
+                        android:gravity="center"
+                        style="@style/extrabold"
+                        android:text="수"
+                        android:textSize="24sp"/>
+                    <ImageView
+                        android:alpha="0.3"
+                        android:layout_width="95dp"
+                        android:layout_height="95dp"
+                        android:src="@drawable/ic_lion_happy"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/thursdayLayout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center">
+                    <TextView
+                        android:id="@+id/thursdayDateText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="48dp"
+                        android:gravity="center"
+                        style="@style/extrabold"
+                        android:text="28"
+                        android:textSize="24sp"/>
+                    <TextView
+                        android:id="@+id/thursdayDayText"
                         android:layout_width="22dp"
                         android:layout_height="48dp"
                         android:gravity="center"
@@ -140,23 +183,27 @@
                         android:text="목"
                         android:textSize="24sp"/>
                     <ImageView
+                        android:alpha="0.3"
                         android:layout_width="95dp"
                         android:layout_height="95dp"
                         android:src="@drawable/ic_lion_happy"/>
                 </LinearLayout>
                 <LinearLayout
+                    android:id="@+id/fridayLayout"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:gravity="center">
                     <TextView
-                        android:layout_width="22dp"
+                        android:id="@+id/fridayDateText"
+                        android:layout_width="wrap_content"
                         android:layout_height="48dp"
                         android:gravity="center"
                         style="@style/extrabold"
-                        android:text="5"
+                        android:text="29"
                         android:textSize="24sp"/>
                     <TextView
+                        android:id="@+id/fridayDayText"
                         android:layout_width="22dp"
                         android:layout_height="48dp"
                         android:gravity="center"
@@ -164,23 +211,27 @@
                         android:text="금"
                         android:textSize="24sp"/>
                     <ImageView
+                        android:alpha="0.3"
                         android:layout_width="95dp"
                         android:layout_height="95dp"
                         android:src="@drawable/ic_lion_happy"/>
                 </LinearLayout>
                 <LinearLayout
+                    android:id="@+id/saturdayLayout"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:gravity="center">
                     <TextView
-                        android:layout_width="22dp"
+                        android:id="@+id/saturdayDateText"
+                        android:layout_width="wrap_content"
                         android:layout_height="48dp"
                         android:gravity="center"
                         style="@style/extrabold"
-                        android:text="6"
+                        android:text="30"
                         android:textSize="24sp"/>
                     <TextView
+                        android:id="@+id/saturdayDayText"
                         android:layout_width="22dp"
                         android:layout_height="48dp"
                         android:gravity="center"
@@ -188,32 +239,7 @@
                         android:text="토"
                         android:textSize="24sp"/>
                     <ImageView
-                        android:layout_width="95dp"
-                        android:layout_height="95dp"
-                        android:src="@drawable/ic_lion_happy"/>
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:gravity="center">
-                    <TextView
-                        android:layout_width="22dp"
-                        android:layout_height="48dp"
-                        android:gravity="center"
-                        android:textColor="#FFB108"
-                        style="@style/extrabold"
-                        android:text="7"
-                        android:textSize="24sp"/>
-                    <TextView
-                        android:layout_width="22dp"
-                        android:layout_height="48dp"
-                        android:gravity="center"
-                        android:textColor="#FFB108"
-                        style="@style/extrabold"
-                        android:text="일"
-                        android:textSize="24sp"/>
-                    <ImageView
+                        android:alpha="0.3"
                         android:layout_width="95dp"
                         android:layout_height="95dp"
                         android:src="@drawable/ic_lion_happy"/>
@@ -233,7 +259,7 @@
                 android:layout_marginBottom="10dp"
                 style="@style/extrabold"
                 android:text="최근 감정 일기"
-                android:textSize="32dp"
+                android:textSize="32sp"
                 android:gravity="center"/>
 
             <LinearLayout
@@ -249,6 +275,7 @@
                     android:orientation="horizontal"
                     android:gravity="center">
                     <ImageView
+                        android:id="@+id/recentDiaryEmotionImageView"
                         android:layout_width="95dp"
                         android:layout_height="95dp"
                         android:src="@drawable/ic_lion_happy"/>
@@ -260,13 +287,15 @@
                         android:layout_height="wrap_content"
                         android:orientation="vertical">
                         <TextView
+                            android:id="@+id/diaryTitleTextView"
                             android:layout_width="wrap_content"
                             android:layout_height="50dp"
                             android:gravity="center"
                             style="@style/extrabold"
                             android:textSize="33.33sp"
-                            android:text="아주 행복한 하루"/>
+                            android:text="@string/diary_title_placeholder_1"/>
                         <TextView
+                            android:id="@+id/diaryDateTextView"
                             android:layout_width="wrap_content"
                             android:layout_height="48dp"
                             android:gravity="center"
@@ -280,12 +309,13 @@
                     android:layout_width="0dp"
                     android:layout_height="75dp"/>
                 <TextView
+                    android:id="@+id/diaryContentTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="32sp"
                     style="@style/extrabold"
                     android:lineHeight="53.3dp"
-                    android:text="@string/diary_placeholder"/>
+                    android:text="@string/diary_placeholder_1"/>
             </LinearLayout>
         </LinearLayout>
 
@@ -307,13 +337,14 @@
                 android:layout_marginBottom="20dp"
                 style="@style/extrabold"
                 android:text="이렇게 대처해주세요!"
-                android:textSize="32dp"
+                android:textSize="32sp"
                 android:gravity="center"/>
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <TextView
+                    android:id="@+id/diaryGuideTextView"
                     android:paddingVertical="25dp"
                     android:paddingLeft="150dp"
                     android:paddingRight="78dp"
@@ -325,7 +356,7 @@
                     android:layout_gravity="bottom"
                     style="@style/extrabold"
                     android:textSize="26.67sp"
-                    android:text="@string/diary_guide_placeholder"/>
+                    android:text="@string/diary_guide_placeholder_1"/>
                 <ImageView
                     android:layout_width="152.67dp"
                     android:layout_height="201.33dp"

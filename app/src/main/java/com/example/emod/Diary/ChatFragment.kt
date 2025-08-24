@@ -2,7 +2,9 @@ package com.example.emod.Diary
 
 import android.Manifest
 import android.content.Intent
+import android.graphics.BlurMaskFilter
 import android.graphics.Outline
+import android.graphics.Paint
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -52,7 +54,6 @@ class ChatFragment : BaseFragment<FragmentChatBinding>(FragmentChatBinding::infl
     private var pendingSpeechText: String? = null
     private lateinit var userChat: TextView
     private lateinit var characterChat: TextView
-    private lateinit var anim : Animation
 
     // currentStep 계산
     private var currentStep: Int = 1
@@ -74,7 +75,8 @@ class ChatFragment : BaseFragment<FragmentChatBinding>(FragmentChatBinding::infl
         // userChat, characterChat, anim 초기화
         userChat = binding.tvChatUser
         characterChat = binding.tvChatCharacter
-        anim = AnimationUtils.loadAnimation(requireContext(), R.anim.slide_up_fade_out)
+
+        val btnFinish = binding.btnFinish
 
         // STT 초기화
         speechRecognizer = SpeechRecognizer.createSpeechRecognizer(requireContext())
@@ -84,7 +86,7 @@ class ChatFragment : BaseFragment<FragmentChatBinding>(FragmentChatBinding::infl
                 val matches = results?.getStringArrayList(SpeechRecognizer.RESULTS_RECOGNITION)
                 recognizedText = matches?.joinToString(" ") ?: ""
                 Log.d("ChatFragment", "인식된 음성: ${recognizedText}")
-                binding.btnFinish.isEnabled = true
+                btnFinish.isEnabled = true
                 showTypingChat(userChat, "${recognizedText}")
 //                binding.tvUserInput.text = recognizedText
             }
@@ -162,7 +164,7 @@ class ChatFragment : BaseFragment<FragmentChatBinding>(FragmentChatBinding::infl
         callProceed(emptyList(), 1)
 
         // "답변 끝내기" 버튼
-        binding.btnFinish.setOnClickListener {
+        btnFinish.setOnClickListener {
             if (!lastQuestion.isNullOrBlank() && !recognizedText.isNullOrBlank()) {
                 Log.d("ChatFragment", "클릭됨")
                 conversation.add("assistant: $lastQuestion")
@@ -173,7 +175,7 @@ class ChatFragment : BaseFragment<FragmentChatBinding>(FragmentChatBinding::infl
                 // 버튼 눌렀을 때만 API 호출
                 callProceed(conversation, currentStep)
             }
-            binding.btnFinish.isEnabled = false
+            btnFinish.isEnabled = false
         }
 
         // "질문 다시 듣기" 버튼
@@ -192,8 +194,6 @@ class ChatFragment : BaseFragment<FragmentChatBinding>(FragmentChatBinding::infl
         }
     }
 
-    private fun setCharacterAnim(anim: AnimationUtils) {
-    }
 
     // ✅ proceed API 호출
     private fun callProceed(conversation: List<String>, currentStep: Int) {

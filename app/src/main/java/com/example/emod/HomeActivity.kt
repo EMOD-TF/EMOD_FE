@@ -12,6 +12,7 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.example.emod.Diary.DiaryActivity
 import com.example.emod.databinding.ActivityHomeBinding
+import com.example.emod.ui.againDiary.AgainActivity
 import com.example.emod.ui.parent.ParentPasswordActivity
 
 class HomeActivity : AppCompatActivity() {
@@ -32,6 +33,11 @@ class HomeActivity : AppCompatActivity() {
 
         binding.btnProfile.setOnClickListener {
             val intent = Intent(this, ParentPasswordActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.btnSeeDiary.setOnClickListener {
+            val intent = Intent(this, AgainActivity::class.java)
             startActivity(intent)
         }
 

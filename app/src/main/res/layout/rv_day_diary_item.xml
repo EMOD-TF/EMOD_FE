@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="100dp"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="18dp"
+    android:orientation="vertical">
+    
+    <TextView
+        android:id="@+id/tv_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="25"
+        android:textSize="24sp"
+        android:layout_gravity="center"
+        style="@style/extrabold"/>
+
+    <TextView
+        android:id="@+id/tv_date_of_week"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="월"
+        android:textSize="24sp"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        style="@style/extrabold"/>
+
+    <ImageView
+        android:id="@+id/iv_emotion"
+        android:layout_width="100dp"
+        android:layout_height="90dp"
+        android:src="@drawable/ic_lion_yet"
+        android:layout_marginTop="10dp"/>
+
+
+</LinearLayout>

@@ -31,6 +31,8 @@ class Summarize4Fragment : BaseFragment<FragmentSummarize4Binding>(FragmentSumma
         val userName = prefs?.getString("userName", null)
         binding.tvToday.text = "${userName}의 하루"
 
+
+
         viewModel.summaryData.observe(viewLifecycleOwner) { summary ->
             binding.keywordEmotion.text = summary.emotion.keyword
 
@@ -88,17 +90,19 @@ class Summarize4Fragment : BaseFragment<FragmentSummarize4Binding>(FragmentSumma
 
         // 2. summary 데이터 하나의 문자열로 합치기
         val value = """
+        emotion: ${summary.emotion.keyword}
         sentence: ${summary.emotion.sentence}
         topic: ${summary.topic.sentence}
         event: ${summary.event.sentence}
         place: ${summary.place.sentence}
     """.trimIndent()
 
+        Log.d("ChatFragment", "${summary.emotion.keyword}")
+
         // 3. 날짜를 key로 저장 (같은 날짜면 덮어쓰기 됨)
         editor.putString(currentDate, value)
         editor.apply()
     }
-
 
 
 

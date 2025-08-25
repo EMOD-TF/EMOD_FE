@@ -3,8 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:showIn="@layout/activity_signup">
+    android:layout_height="match_parent">
 
     <LinearLayout
         android:id="@+id/rowContainer"
@@ -21,7 +20,7 @@
         <!-- 유치원 -->
         <LinearLayout
             android:id="@+id/boxKindergarten"
-            android:layout_width="192.67dp"
+            android:layout_width="180dp"
             android:layout_height="242dp"
             android:background="@drawable/bg_square_selector"
             android:clickable="true"
@@ -55,7 +54,7 @@
         <!-- 학교 -->
         <LinearLayout
             android:id="@+id/boxSchool"
-            android:layout_width="192.67dp"
+            android:layout_width="180dp"
             android:layout_height="242dp"
             android:background="@drawable/bg_square_selector"
             android:clickable="true"
@@ -89,7 +88,7 @@
         <!-- 건물 -->
         <LinearLayout
             android:id="@+id/boxBuilding"
-            android:layout_width="192.67dp"
+            android:layout_width="180dp"
             android:layout_height="242dp"
             android:background="@drawable/bg_square_selector"
             android:clickable="true"
@@ -123,7 +122,7 @@
         <!-- 집 -->
         <LinearLayout
             android:id="@+id/boxHome"
-            android:layout_width="192.67dp"
+            android:layout_width="180dp"
             android:layout_height="242dp"
             android:background="@drawable/bg_square_selector"
             android:clickable="true"

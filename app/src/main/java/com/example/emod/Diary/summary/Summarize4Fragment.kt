@@ -10,8 +10,10 @@ import com.example.emod.Diary.DiaryActivity
 import com.example.emod.Diary.ExpressionFragment
 import com.example.emod.Diary.viewmodel.SummaryViewModel
 import com.example.emod.R
+import com.example.emod.data.LocalSummary
 import com.example.emod.data.remote.dto.summary.SummaryResponse
 import com.example.emod.databinding.FragmentSummarize4Binding
+import com.google.gson.Gson
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
@@ -24,53 +26,39 @@ class Summarize4Fragment : BaseFragment<FragmentSummarize4Binding>(FragmentSumma
         super.onCreate(savedInstanceState)
     }
 
+    private val gson by lazy { Gson() }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val prefs = context?.getSharedPreferences("my name", Context.MODE_PRIVATE)
-        val userName = prefs?.getString("userName", null)
+        val prefs = requireContext().getSharedPreferences("my name", Context.MODE_PRIVATE)
+        val userName = prefs.getString("userName", null)
         binding.tvToday.text = "${userName}의 하루"
 
-
-
         viewModel.summaryData.observe(viewLifecycleOwner) { summary ->
+            // UI 바인딩
             binding.keywordEmotion.text = summary.emotion.keyword
 
+            // ✅ JSON으로 저장 + emotion 분리 저장
             saveSummaryToLocal(requireContext(), summary)
 
-            Log.d("ChatFragment", "감정 : ${summary.emotion.keyword}")
-
-            if (summary.emotion.keyword == "기쁨") {
-                binding.icEmotion.setImageResource(R.drawable.ic_happy)
-                binding.tvChat.text = "${userName}" + getString(R.string.happy_emotion)
+            // 감정별 아이콘/멘트
+            when (summary.emotion.keyword) {
+                "기쁨" -> {
+                    binding.icEmotion.setImageResource(R.drawable.ic_happy)
+                    binding.tvChat.text = "$userName" + getString(R.string.happy_emotion)
+                }
+                "화남" -> {
+                    binding.icEmotion.setImageResource(R.drawable.ic_angry)
+                    binding.tvChat.text = "$userName" + getString(R.string.angry_emotion)
+                }
+                else -> {
+                    binding.icEmotion.setImageResource(R.drawable.ic_sad)
+                    binding.tvChat.text = "$userName" + getString(R.string.sad_emotion)
+                }
             }
-            else if (summary.emotion.keyword == "화남") {
-                binding.icEmotion.setImageResource(R.drawable.ic_angry)
-                binding.tvChat.text = "${userName}" + getString(R.string.angry_emotion)
-            }
-            else {
-                binding.icEmotion.setImageResource(R.drawable.ic_sad)
-                binding.tvChat.text = "${userName}" + getString(R.string.sad_emotion)
-            }
-
-            val prefs = requireContext().getSharedPreferences("summarize_content", Context.MODE_PRIVATE)
-            val editor = prefs.edit()
-
-            // 오늘 날짜 (key)
-            val today = java.text.SimpleDateFormat("yyyy-MM-dd", java.util.Locale.getDefault()).format(java.util.Date())
-
-            // 저장할 내용 (value)
-            val summarizeText = summary.emotion.sentence  // 예: place/topic/event 합친 문장
-
-            // JSON 또는 그냥 문자열 저장
-            editor.putString(today, summarizeText)
-            editor.apply()
-
-            Log.d("Summarize4Fragment", "저장 완료: $today -> $summarizeText")
         }
 
-
-        // Expression Fragment로 이동
         binding.btnNext4.setOnClickListener {
             (activity as DiaryActivity).setFragment(ExpressionFragment())
         }
@@ -79,31 +67,32 @@ class Summarize4Fragment : BaseFragment<FragmentSummarize4Binding>(FragmentSumma
         }
     }
 
-
-    // 로컬에 프로필 요약 내용 저장 함수
+    // ✅ JSON 저장: 날짜 키로 LocalSummary를 저장 + emotion은 별도 키로도 저장
     private fun saveSummaryToLocal(context: Context, summary: SummaryResponse) {
         val prefs = context.getSharedPreferences("summarize_content", Context.MODE_PRIVATE)
         val editor = prefs.edit()
 
-        // 1. 현재 날짜 구하기
         val currentDate = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(Date())
 
-        // 2. summary 데이터 하나의 문자열로 합치기
-        val value = """
-        emotion: ${summary.emotion.keyword}
-        sentence: ${summary.emotion.sentence}
-        topic: ${summary.topic.sentence}
-        event: ${summary.event.sentence}
-        place: ${summary.place.sentence}
-    """.trimIndent()
+        val local = LocalSummary(
+            emotionKeyword = summary.emotion.keyword,
+            emotionSentence = summary.emotion.sentence,
+            topic = summary.topic.sentence,
+            event = summary.event.sentence,
+            place = summary.place.sentence
+        )
 
-        Log.d("ChatFragment", "${summary.emotion.keyword}")
+        val json = gson.toJson(local)
 
-        // 3. 날짜를 key로 저장 (같은 날짜면 덮어쓰기 됨)
-        editor.putString(currentDate, value)
+        // 날짜별 요약 JSON 저장
+        editor.putString(currentDate, json)
+
+        // ✅ emotion은 별도 접근할 수 있도록 분리 저장(요구사항)
+        editor.putString("${currentDate}_emotion", summary.emotion.keyword)
+
         editor.apply()
+
+        Log.d("Summarize4Fragment", "저장 완료: $currentDate -> $json")
     }
-
-
 
 }

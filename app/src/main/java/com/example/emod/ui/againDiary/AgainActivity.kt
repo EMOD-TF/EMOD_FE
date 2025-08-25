@@ -22,10 +22,13 @@ import androidx.fragment.app.commit
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.emod.HomeActivity
 import com.example.emod.R
+import com.example.emod.data.LocalSummary
 import com.example.emod.databinding.ActivityAgainBinding
 import com.example.emod.ui.againDiary.adapter.CustomSpinnerAdapter
 import com.example.emod.ui.againDiary.adapter.DiaryDayAdapter
 import com.example.emod.ui.againDiary.data.DiaryDay
+import com.google.gson.Gson
+import com.google.gson.JsonSyntaxException
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
@@ -61,41 +64,28 @@ class AgainActivity : AppCompatActivity() {
         for (i in 0 until 7) {
             val dateStr = sdfDate.format(calendar.time)
             val dayOfWeek = sdfDay.format(calendar.time)
-            val summary = prefs.getString(dateStr, null)
-            val emotion = getEmotionFromSummary(summary)
-            diaryDays.add(DiaryDay(dateStr, dayOfWeek, summary, emotion))
-            calendar.add(Calendar.DAY_OF_MONTH, 1)
 
+            val raw = prefs.getString(dateStr, null)
+            val local = parseLocalSummary(raw)               // ✅ JSON 파싱
+            val emotion = prefs.getString("${dateStr}_emotion", null)
+                ?: local?.emotionKeyword           // 분리 저장 없으면 JSON에서 보충
+            val summaryText = toDisplayText(local)           // ✅ 보기 좋은 텍스트로
+
+            diaryDays.add(DiaryDay(dateStr, dayOfWeek, summaryText, emotion))
+            calendar.add(Calendar.DAY_OF_MONTH, 1)
         }
+
         val writtenDiaryCount = diaryDays.count { it.summary != null }
         binding.tvDayCount.text = "$writtenDiaryCount 일"
 
 
 
         rvAdapter = DiaryDayAdapter(diaryDays) { diaryDay ->
-            Log.d("ChatFragment", "${diaryDay.emotion}")
-            // 감정에 따른 이미지 리소스 결정
-            val emotionRes = when {
-                diaryDay.emotion?.contains("기뻤") == true -> R.drawable.ic_lion_happy
-                diaryDay.emotion?.contains("슬픔") == true -> R.drawable.ic_lion_sad
-                diaryDay.emotion?.contains("화남") == true -> R.drawable.ic_lion_angry
-                else -> R.drawable.ic_lion_happy
-            }
-
-            // 감정에 따른 제목 결정
-            val title = when {
-                diaryDay.emotion?.contains("기뻤") == true -> "기쁜 마음을 느낀 날"
-                diaryDay.emotion?.contains("슬픔") == true -> "슬픈 일이 있었던 날"
-                diaryDay.emotion?.contains("화남") == true -> "조금은 화가 났던 날"
-                else -> "최근 감정일기"
-            }
-
             binding.llSelectDay.visibility = View.VISIBLE
-            binding.icEmotion.setImageResource(emotionRes)
-            binding.tvDiaryTitle.text = title       // 감정별 제목 반영
+            binding.icEmotion.setImageResource(emotionIconRes(diaryDay.emotion))   // ✅
+            binding.tvDiaryTitle.text = emotionTitle(diaryDay.emotion)             // ✅
             binding.tvDiaryDate.text = diaryDay.date
-            binding.tvDiaryContent.text = diaryDay.summary ?: "내용 없음"
-
+            binding.tvDiaryContent.text = diaryDay.summary ?: "내용 없음"          // ✅ 텍스트만
         }
 
 
@@ -205,13 +195,67 @@ class AgainActivity : AppCompatActivity() {
     }
 
 
+    private val gson by lazy { Gson() }
+
+
+    /** JSON 또는 레거시 문자열을 안전하게 파싱 */
+    private fun parseLocalSummary(raw: String?): LocalSummary? {
+        if (raw.isNullOrBlank()) return null
+        return try {
+            gson.fromJson(raw, LocalSummary::class.java)
+        } catch (_: JsonSyntaxException) {
+            null // 레거시 포맷은 여기서 걸러짐
+        }
+    }
+
+    /** 화면에 보여줄 텍스트(정돈된 멀티라인) */
+    private fun toDisplayText(local: LocalSummary?): String? {
+        if (local == null) return null
+        return buildString {
+            appendLine("• 오늘의 감정: ${local.emotionSentence}")
+            appendLine("• 주제: ${local.topic}")
+            appendLine("• 사건: ${local.event}")
+            append("• 장소: ${local.place}")
+        }
+    }
+
+    /** 감정 → 아이콘 리소스 */
+    private fun emotionIconRes(keyword: String?): Int {
+        return when (keyword) {
+            "기쁨" -> R.drawable.ic_lion_happy
+            "슬픔" -> R.drawable.ic_lion_sad
+            "화남" -> R.drawable.ic_lion_angry
+            else   -> R.drawable.ic_lion_happy
+        }
+    }
+
+    /** 감정 → 제목 문자열 */
+    private fun emotionTitle(keyword: String?): String {
+        return when (keyword) {
+            "기쁨" -> "기쁜 마음을 느낀 날"
+            "슬픔" -> "슬픈 일이 있었던 날"
+            "화남" -> "조금은 화가 났던 날"
+            else   -> "최근 감정일기"
+        }
+    }
+
     fun updateDiaryListForWeek(year: Int, month: Int, week: Int) {
         val prefs = this.getSharedPreferences("summarize_content", Context.MODE_PRIVATE)
+
         val items = getDatesAndDaysOfWeek(year, month, week).map { (dateStr, dayStr) ->
-            val summary = prefs.getString(dateStr, null)
-            val emotion = getEmotionFromSummary(summary)
-            DiaryDay(date = dateStr, dayOfWeek = dayStr, summary = summary, emotion = emotion)
+            val raw = prefs.getString(dateStr, null)
+            val local = parseLocalSummary(raw)
+            val emotion = prefs.getString("${dateStr}_emotion", null) ?: local?.emotionKeyword
+            val summaryText = toDisplayText(local) ?: raw // 레거시 문자열이면 그대로
+
+            DiaryDay(
+                date = dateStr,
+                dayOfWeek = dayStr,
+                summary = summaryText,
+                emotion = emotion
+            )
         }
+
         rvAdapter.updateItems(items)
     }
 

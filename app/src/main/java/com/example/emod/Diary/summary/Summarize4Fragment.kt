@@ -97,7 +97,7 @@ class Summarize4Fragment : BaseFragment<FragmentSummarize4Binding>(FragmentSumma
         place: ${summary.place.sentence}
     """.trimIndent()
 
-        Log.d("ChatFragment", "${summary.emotion.keyword}")
+        Log.d("ChatFragment", "${value}")
 
         // 3. 날짜를 key로 저장 (같은 날짜면 덮어쓰기 됨)
         editor.putString(currentDate, value)

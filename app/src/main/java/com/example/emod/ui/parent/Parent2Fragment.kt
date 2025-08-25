@@ -20,15 +20,15 @@ class Parent2Fragment
         val slot3 = binding.itemSlot3;
 
         slot1.tvEmotionLabel.text = "기쁨"
-        slot1.tvEmotionCount.text = "5"
+        slot1.tvEmotionCount.text = "1"
         slot1.ivEmotionIcon.setImageResource(R.drawable.ic_lion_happy)
 
         slot2.tvEmotionLabel.text = "슬픔"
-        slot2.tvEmotionCount.text = "3"
+        slot2.tvEmotionCount.text = "1"
         slot2.ivEmotionIcon.setImageResource(R.drawable.ic_lion_sad)
 
         slot3.tvEmotionLabel.text = "화남"
-        slot3.tvEmotionCount.text = "2"
+        slot3.tvEmotionCount.text = "0"
         slot3.ivEmotionIcon.setImageResource(R.drawable.ic_lion_angry)
 
 
@@ -62,11 +62,11 @@ class Parent2Fragment
         }
 
         val words = listOf(
-            WordCloudView.Word("버스", 10f),
-            WordCloudView.Word("엄마", 7f),
-            WordCloudView.Word("아빠", 5f),
-            WordCloudView.Word("형아", 4f),
-            WordCloudView.Word("선생님", 3f),
+            WordCloudView.Word("유치원", 10f),
+            WordCloudView.Word("블럭놀이", 7f),
+            WordCloudView.Word("기쁨", 5f),
+            WordCloudView.Word("친구", 4f),
+            WordCloudView.Word("행복", 3f),
             WordCloudView.Word("고양이", 2f),
             WordCloudView.Word("자동차", 6f),
             WordCloudView.Word("집", 3.5f)

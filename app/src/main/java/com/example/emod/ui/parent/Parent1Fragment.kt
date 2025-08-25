@@ -125,7 +125,7 @@ class Parent1Fragment
                         R.string.diary_title_placeholder_1,
                         R.string.diary_placeholder_1,
                         R.string.diary_guide_placeholder_1,
-                        R.drawable.ic_lion_sad
+                        R.drawable.ic_lion_happy
                     )
                     else -> DayInfo(containerId, dateTextId, dayTextId, date, false)
                 }

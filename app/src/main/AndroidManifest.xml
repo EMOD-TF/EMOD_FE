@@ -62,6 +62,9 @@
         <activity
             android:name="com.example.hackathon.ui.parent.ParentActivity"
             android:exported="false"/>
+        <activity
+            android:name=".EditProfileActivity"
+            android:exported="false"/>
         <meta-data
             android:name="com.google.mlkit.vision.DEPENDENCIES"
             android:value="face" />

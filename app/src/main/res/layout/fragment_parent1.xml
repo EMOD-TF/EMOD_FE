@@ -19,19 +19,29 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+
+            <!-- ▼▼▼ 주차 선택 헤더: id/foreground/clickable 추가 ▼▼▼ -->
             <LinearLayout
+                android:id="@+id/weekSelectorLayout"
                 android:layout_marginBottom="35dp"
-                android:layout_width="246dp"
+                android:layout_width="wrap_content"
+                android:paddingHorizontal="18.5dp"
                 android:layout_height="48dp"
                 android:orientation="horizontal"
                 android:background="@drawable/keypad_non_highlight"
-                android:gravity="center">
+                android:gravity="center"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackgroundBorderless">
+
                 <TextView
+                    android:id="@+id/weekTitleTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="2025년 8월 다섯째주"
                     style="@style/bold"
-                    android:textSize="22sp"/>
+                    android:textSize="22sp" />
+
                 <ImageView
                     android:layout_marginStart="6dp"
                     android:layout_width="wrap_content"
@@ -315,6 +325,7 @@
                     android:textSize="32sp"
                     style="@style/extrabold"
                     android:lineHeight="53.3dp"
+                    android:lineSpacingMultiplier="1.3"
                     android:text="@string/diary_placeholder_1"/>
             </LinearLayout>
         </LinearLayout>
@@ -351,6 +362,7 @@
                     android:layout_marginLeft="50dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:lineSpacingMultiplier="1.15"
                     android:lineHeight="53.3dp"
                     android:background="@drawable/bg_parent_explain"
                     android:layout_gravity="bottom"

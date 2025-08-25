@@ -31,7 +31,9 @@
             android:exported="false" />
         <activity
             android:name=".HomeActivity"
-            android:exported="false"></activity>
+            android:exported="false">
+
+        </activity>
         <activity
             android:name=".ui.onboarding.OnboardingActivity"
             android:exported="true">
@@ -41,15 +43,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".LoginActivity"
+        <activity android:name=".LoginActivity"
             android:exported="false" />
-        <activity
-            android:name=".ui.signUp.SignupActivity"
+        <activity android:name="com.example.emod.ui.signUp.SignupActivity"
             android:exported="false" />
         <activity
             android:name=".Diary.DiaryActivity"
-            android:exported="false" />
+            android:exported="false"/>
         <activity
             android:name=".VoiceActivity"
             android:exported="false" />
@@ -58,14 +58,16 @@
             android:exported="false" />
         <activity
             android:name=".MainActivity"
-            android:exported="false" />
+            android:exported="false"/>
         <activity
             android:name=".ui.parent.ParentPasswordActivity"
-            android:exported="false" />
+            android:exported="false"/>
         <activity
             android:name="com.example.hackathon.ui.parent.ParentActivity"
-            android:exported="false" />
-
+            android:exported="false"/>
+        <activity
+            android:name=".EditProfileActivity"
+            android:exported="false"/>
         <meta-data
             android:name="com.google.mlkit.vision.DEPENDENCIES"
             android:value="face" />
